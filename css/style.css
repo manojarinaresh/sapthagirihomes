@@ -147,6 +147,7 @@ input, select, textarea { font-family: var(--font); }
   color: rgba(255,255,255,0.9);
   padding: 0.5rem 0;
   font-size: 0.82rem;
+  overflow: hidden;
 }
 .topbar-inner {
   display: flex;
@@ -165,6 +166,8 @@ input, select, textarea { font-family: var(--font); }
   white-space: nowrap;
   flex: 1;
   justify-content: center;
+  overflow: hidden;
+  min-width: 0;
 }
 .topbar-center i { font-size: 1.1rem; animation: templeGlow 2.5s ease-in-out infinite alternate; }
 @keyframes templeGlow {
@@ -1773,6 +1776,8 @@ input, select, textarea { font-family: var(--font); }
   .stat-item h3       { font-size: 1.75rem; }
   .stat-item p        { font-size: 0.78rem; }
   .topbar             { padding: 0.4rem 0; }
+  .topbar-right a:first-child { display: none; }
+  .topbar-center span { overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
   .topbar-left span,
   .topbar-right a     { font-size: 0.78rem; }
   .city-card          { height: 160px; }

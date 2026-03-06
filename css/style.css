@@ -4,23 +4,23 @@
 
 /* ---- CSS Variables ---- */
 :root {
-  --primary:       #1a3c6e;
-  --primary-dark:  #122a50;
-  --primary-light: #2d6a9f;
-  --accent:        #f4a832;
-  --accent-dark:   #d4891a;
+  --primary:       #1e3a5f;   /* rich deep navy */
+  --primary-dark:  #0f2240;   /* deepest navy */
+  --primary-light: #2471a3;  /* medium blue */
+  --accent:        #f59e0b;   /* bright temple gold */
+  --accent-dark:   #d97706;   /* deep gold */
   --danger:        #e74c3c;
   --success:       #27ae60;
-  --text:          #2c3e50;
-  --text-light:    #6c757d;
+  --text:          #1a2332;
+  --text-light:    #5a6a7a;
   --text-muted:    #adb5bd;
   --bg:            #ffffff;
-  --bg-light:      #f8f9fa;
-  --bg-dark:       #0f2642;
-  --border:        #e9ecef;
-  --shadow:        0 4px 20px rgba(0,0,0,0.08);
-  --shadow-lg:     0 12px 40px rgba(0,0,0,0.15);
-  --radius:        12px;
+  --bg-light:      #fdf8f0;   /* warm cream */
+  --bg-dark:       #0f2240;
+  --border:        #ead9c8;
+  --shadow:        0 4px 24px rgba(30,58,95,0.10);
+  --shadow-lg:     0 16px 48px rgba(30,58,95,0.20);
+  --radius:        14px;
   --radius-sm:     8px;
   --transition:    all 0.3s ease;
   --font:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -62,11 +62,20 @@ input, select, textarea { font-family: var(--font); }
   position: relative;
 }
 .section-header h2 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 0.75rem;
   line-height: 1.2;
+}
+.section-header h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  border-radius: 2px;
+  margin: 0.6rem auto 0;
 }
 .section-header p {
   color: var(--text-light);
@@ -268,17 +277,24 @@ input, select, textarea { font-family: var(--font); }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0f2642 0%, #1a3c6e 40%, #2d6a9f 70%, #1a5276 100%);
+  background:
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85') center/cover no-repeat,
+    linear-gradient(160deg, #0f2240 0%, #1e3a5f 50%, #1b5e35 100%);
   overflow: hidden;
 }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: rgba(15, 38, 66, 0.55);
+  background: linear-gradient(
+    160deg,
+    rgba(10, 25, 50, 0.78) 0%,
+    rgba(15, 55, 30, 0.60) 55%,
+    rgba(160, 80, 0, 0.40) 100%
+  );
 }
 .hero-content {
   position: relative;
@@ -426,7 +442,7 @@ input, select, textarea { font-family: var(--font); }
    STATS SECTION
    ================================================================ */
 .stats-section {
-  background: var(--primary);
+  background: linear-gradient(135deg, #0f2240 0%, #1e3a5f 50%, #7c3d00 100%);
   padding: 2.5rem 0;
 }
 .stats-grid {
@@ -790,11 +806,11 @@ input, select, textarea { font-family: var(--font); }
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  height: 180px;
+  height: 220px;
   display: block;
   transition: var(--transition);
 }
-.city-card:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+.city-card:hover { transform: scale(1.03); box-shadow: var(--shadow-lg); }
 .city-bg {
   width: 100%; height: 100%;
   transition: transform 0.4s ease;
@@ -806,10 +822,25 @@ input, select, textarea { font-family: var(--font); }
 .city-mum { background: linear-gradient(135deg, #f7971e, #ffd200); }
 .city-del { background: linear-gradient(135deg, #373b44, #4286f4); }
 .city-pun { background: linear-gradient(135deg, #ee0979, #ff6a00); }
-/* Tirupathi region cities */
-.city-tpt  { background: linear-gradient(135deg, #b8860b, #f4a832, #e05206); }
-.city-ren  { background: linear-gradient(135deg, #1a5276, #2ecc71, #1abc9c); }
-.city-chan { background: linear-gradient(135deg, #4a235a, #8e44ad, #2980b9); }
+/* Tirupathi region cities — photo + overlay + gradient fallback */
+.city-tpt {
+  background:
+    linear-gradient(170deg, rgba(100,45,0,0.60) 0%, rgba(0,0,0,0.55) 100%),
+    url('https://images.unsplash.com/photo-1609766418204-94aae0ecfdfc?w=800&q=80') center/cover no-repeat,
+    linear-gradient(150deg, #7c3200 0%, #c87000 45%, #e8a020 75%, #4a7020 100%);
+}
+.city-ren {
+  background:
+    linear-gradient(170deg, rgba(0,60,30,0.55) 0%, rgba(0,0,0,0.55) 100%),
+    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80') center/cover no-repeat,
+    linear-gradient(150deg, #0a3d2b 0%, #1a7a4a 40%, #38a169 70%, #006994 100%);
+}
+.city-chan {
+  background:
+    linear-gradient(170deg, rgba(40,10,70,0.60) 0%, rgba(0,0,0,0.55) 100%),
+    url('https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80') center/cover no-repeat,
+    linear-gradient(150deg, #2c1b4a 0%, #6a2f8a 40%, #9b59b6 65%, #1a4080 100%);
+}
 .cities-grid-3 { grid-template-columns: repeat(3, 1fr); }
 .city-info {
   position: absolute;

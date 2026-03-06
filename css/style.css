@@ -142,9 +142,10 @@ input, select, textarea { font-family: var(--font); }
    TOP BAR
    ================================================================ */
 .topbar {
-  background: var(--primary-dark);
-  color: rgba(255,255,255,0.85);
-  padding: 0.55rem 0;
+  background: linear-gradient(90deg, #0a1628 0%, #1e3a5f 35%, #2a4f7c 50%, #1e3a5f 65%, #0a1628 100%);
+  border-bottom: 2px solid var(--accent);
+  color: rgba(255,255,255,0.9);
+  padding: 0.5rem 0;
   font-size: 0.82rem;
 }
 .topbar-inner {
@@ -152,6 +153,21 @@ input, select, textarea { font-family: var(--font); }
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+}
+.topbar-center {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.topbar-center i { font-size: 1.1rem; animation: templeGlow 2.5s ease-in-out infinite alternate; }
+@keyframes templeGlow {
+  from { color: var(--accent); text-shadow: 0 0 4px rgba(245,158,11,0.4); }
+  to   { color: #fcd34d;       text-shadow: 0 0 10px rgba(245,158,11,0.9); }
 }
 .topbar-left, .topbar-right {
   display: flex;
@@ -162,18 +178,21 @@ input, select, textarea { font-family: var(--font); }
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.88);
   transition: var(--transition);
 }
+.topbar-left span i, .topbar-right a i { color: var(--accent); }
 .topbar-right a:hover { color: var(--accent); }
 .topbar-right a:first-child {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), #e08b00);
   color: #fff;
-  padding: 0.3rem 0.9rem;
+  padding: 0.32rem 1rem;
   border-radius: 50px;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(245,158,11,0.45);
 }
-.topbar-right a:first-child:hover { background: var(--accent-dark); color: #fff; }
+.topbar-right a:first-child i { color: #fff; }
+.topbar-right a:first-child:hover { background: linear-gradient(135deg, #e08b00, var(--accent)); color: #fff; box-shadow: 0 3px 12px rgba(245,158,11,0.6); }
 
 /* ================================================================
    NAVBAR

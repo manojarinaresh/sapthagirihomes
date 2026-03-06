@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Your Property FREE – SapthagiriHomes.com</title>
+  <meta name="description" content="Post your property for free on SapthagiriHomes. Reach lakhs of verified buyers and tenants directly. Zero brokerage.">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fa fa-phone"></i> +91 90081 76314</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#" onclick="openModal('login-modal')"><i class="fa fa-user"></i> Login / Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="SapthagiriHomes – Homes with Divine Blessings" class="logo-img" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="post-property.html" class="active">Post Property</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="properties.html" class="btn btn-outline">Search Properties</a>
+        <button class="hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa fa-chevron-right"></i>
+        <span>Post Property</span>
+      </div>
+      <h1><i class="fa fa-plus-circle"></i> Post Your Property FREE</h1>
+      <p>Reach millions of buyers &amp; tenants. No brokerage. No hidden charges. It's 100% free!</p>
+    </div>
+  </section>
+
+  <!-- WHY POST WITH US -->
+  <section style="background:var(--bg-light); padding:2rem 0;">
+    <div class="container">
+      <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:40px;height:40px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem;"><i class="fa fa-ban"></i></div>
+          <div><strong style="color:var(--text);font-size:0.95rem;">Zero Brokerage</strong><p style="font-size:0.8rem;color:var(--text-light);margin:0;">Completely free listing</p></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:40px;height:40px;background:var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem;"><i class="fa fa-users"></i></div>
+          <div><strong style="color:var(--text);font-size:0.95rem;">1.2 Lakh+ Buyers</strong><p style="font-size:0.8rem;color:var(--text-light);margin:0;">Active property seekers</p></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:40px;height:40px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem;"><i class="fa fa-eye"></i></div>
+          <div><strong style="color:var(--text);font-size:0.95rem;">Maximum Visibility</strong><p style="font-size:0.8rem;color:var(--text-light);margin:0;">Boost your listing reach</p></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:40px;height:40px;background:var(--danger);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem;"><i class="fa fa-bolt"></i></div>
+          <div><strong style="color:var(--text);font-size:0.95rem;">Quick Responses</strong><p style="font-size:0.8rem;color:var(--text-light);margin:0;">Get enquiries in hours</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST PROPERTY FORM -->
+  <section class="post-property-section">
+    <div class="container">
+
+      <!-- Step Indicator -->
+      <div class="post-steps">
+        <div class="post-step active" id="step-ind-1">
+          <div class="post-step-num">1</div>
+          <div class="post-step-label">Basic Info</div>
+        </div>
+        <div class="post-step-line"></div>
+        <div class="post-step" id="step-ind-2">
+          <div class="post-step-num">2</div>
+          <div class="post-step-label">Property Details</div>
+        </div>
+        <div class="post-step-line"></div>
+        <div class="post-step" id="step-ind-3">
+          <div class="post-step-num">3</div>
+          <div class="post-step-label">Photos &amp; Amenities</div>
+        </div>
+        <div class="post-step-line"></div>
+        <div class="post-step" id="step-ind-4">
+          <div class="post-step-num">4</div>
+          <div class="post-step-label">Pricing &amp; Contact</div>
+        </div>
+      </div>
+
+      <div class="post-form-card">
+
+        <!-- STEP 1: Basic Info -->
+        <div class="post-form-step active" data-step="1">
+          <h3>Step 1: Basic Information</h3>
+          <p>Tell us what you're listing and where it's located</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>I Want To *</label>
+              <select required>
+                <option value="">Select Purpose</option>
+                <option>Sell</option>
+                <option>Rent / Lease</option>
+                <option>PG / Hostel</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Property Type *</label>
+              <select required>
+                <option value="">Select Type</option>
+                <option>Apartment / Flat</option>
+                <option>Independent House / Villa</option>
+                <option>Builder Floor Apartment</option>
+                <option>Penthouse</option>
+                <option>Studio Apartment</option>
+                <option>Residential Plot</option>
+                <option>Commercial Office Space</option>
+                <option>Commercial Shop</option>
+                <option>Warehouse / Godown</option>
+                <option>Agricultural Land</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>City *</label>
+              <select required>
+                <option value="">Select City</option>
+                <option>Hyderabad</option>
+                <option>Bangalore</option>
+                <option>Chennai</option>
+                <option>Mumbai</option>
+                <option>Delhi</option>
+                <option>Pune</option>
+                <option>Kolkata</option>
+                <option>Ahmedabad</option>
+                <option>Jaipur</option>
+                <option>Kochi</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Locality / Area *</label>
+              <input type="text" placeholder="e.g. Gachibowli, Hitech City" required />
+            </div>
+            <div class="form-group form-full">
+              <label>Full Address *</label>
+              <input type="text" placeholder="House No., Street, Area, City, Pincode" required />
+            </div>
+            <div class="form-group">
+              <label>Pincode *</label>
+              <input type="text" placeholder="6-digit pincode" maxlength="6" required />
+            </div>
+            <div class="form-group">
+              <label>Landmark (Optional)</label>
+              <input type="text" placeholder="Nearby landmark" />
+            </div>
+          </div>
+          <div class="post-nav">
+            <div></div>
+            <button class="btn btn-primary" onclick="nextPostStep()">Next Step <i class="fa fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Property Details -->
+        <div class="post-form-step" data-step="2">
+          <h3>Step 2: Property Details</h3>
+          <p>Provide specific details about your property to attract the right buyers</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>BHK / Configuration *</label>
+              <select required>
+                <option value="">Select Configuration</option>
+                <option>1 RK</option>
+                <option>1 BHK</option>
+                <option>2 BHK</option>
+                <option>2.5 BHK</option>
+                <option>3 BHK</option>
+                <option>3.5 BHK</option>
+                <option>4 BHK</option>
+                <option>4+ BHK</option>
+                <option>Studio</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Number of Bathrooms *</label>
+              <select required>
+                <option value="">Select</option>
+                <option>1</option><option>2</option>
+                <option>3</option><option>4</option><option>5+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Built-up Area (sq.ft) *</label>
+              <input type="number" placeholder="e.g. 1200" min="100" required />
+            </div>
+            <div class="form-group">
+              <label>Carpet Area (sq.ft)</label>
+              <input type="number" placeholder="e.g. 980" min="50" />
+            </div>
+            <div class="form-group">
+              <label>Floor Number</label>
+              <select>
+                <option value="">Select Floor</option>
+                <option>Ground Floor</option>
+                <option>1st Floor</option><option>2nd Floor</option>
+                <option>3rd Floor</option><option>4th Floor</option>
+                <option>5th Floor</option><option>6-10th Floor</option>
+                <option>Above 10th Floor</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Total Floors in Building</label>
+              <input type="number" placeholder="e.g. 12" min="1" />
+            </div>
+            <div class="form-group">
+              <label>Furnishing Status *</label>
+              <select required>
+                <option value="">Select</option>
+                <option>Furnished</option>
+                <option>Semi-Furnished</option>
+                <option>Unfurnished</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Parking Available</label>
+              <select>
+                <option value="">Select</option>
+                <option>Yes – Covered</option>
+                <option>Yes – Open</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Property Age</label>
+              <select>
+                <option value="">Select Age</option>
+                <option>Under Construction</option>
+                <option>New / Ready to Move</option>
+                <option>1-2 Years</option>
+                <option>3-5 Years</option>
+                <option>5-10 Years</option>
+                <option>10+ Years</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Facing Direction</label>
+              <select>
+                <option value="">Select</option>
+                <option>East</option><option>West</option>
+                <option>North</option><option>South</option>
+                <option>North-East</option><option>North-West</option>
+                <option>South-East</option><option>South-West</option>
+              </select>
+            </div>
+            <div class="form-group form-full">
+              <label>Property Description *</label>
+              <textarea placeholder="Describe your property — features, nearby amenities, why it's a great buy/rent, any special highlights..." required style="min-height:140px;"></textarea>
+            </div>
+          </div>
+          <div class="post-nav">
+            <button class="btn btn-outline" onclick="prevPostStep()"><i class="fa fa-arrow-left"></i> Previous</button>
+            <button class="btn btn-primary" onclick="nextPostStep()">Next Step <i class="fa fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Photos & Amenities -->
+        <div class="post-form-step" data-step="3">
+          <h3>Step 3: Photos &amp; Amenities</h3>
+          <p>Properties with photos get 5x more responses. Add up to 20 photos.</p>
+
+          <h4 style="color:var(--primary); margin-bottom:1rem; font-size:1rem;">Upload Photos</h4>
+          <div class="upload-area" style="margin-bottom:2rem;">
+            <i class="fa fa-cloud-upload-alt"></i>
+            <p><strong>Click or drag &amp; drop to upload photos</strong></p>
+            <span>Supported formats: JPG, PNG, WEBP · Max size: 10MB per photo · Up to 20 photos</span>
+          </div>
+
+          <h4 style="color:var(--primary); margin-bottom:1rem; font-size:1rem;">Available Amenities</h4>
+          <div class="amenity-grid">
+            <div class="amenity-item"><i class="fa fa-swimming-pool"></i><span>Swimming Pool</span></div>
+            <div class="amenity-item"><i class="fa fa-dumbbell"></i><span>Gym / Fitness</span></div>
+            <div class="amenity-item"><i class="fa fa-shield-alt"></i><span>24/7 Security</span></div>
+            <div class="amenity-item selected"><i class="fa fa-car"></i><span>Car Parking</span></div>
+            <div class="amenity-item"><i class="fa fa-bolt"></i><span>Power Backup</span></div>
+            <div class="amenity-item selected"><i class="fa fa-tint"></i><span>Water Supply</span></div>
+            <div class="amenity-item"><i class="fa fa-leaf"></i><span>Garden / Park</span></div>
+            <div class="amenity-item"><i class="fa fa-elevator"></i><span>Lift / Elevator</span></div>
+            <div class="amenity-item"><i class="fa fa-wifi"></i><span>WiFi / Internet</span></div>
+            <div class="amenity-item"><i class="fa fa-fire-alt"></i><span>Gas Pipeline</span></div>
+            <div class="amenity-item"><i class="fa fa-tv"></i><span>Club House</span></div>
+            <div class="amenity-item"><i class="fa fa-hospital"></i><span>Hospital Nearby</span></div>
+            <div class="amenity-item"><i class="fa fa-school"></i><span>School Nearby</span></div>
+            <div class="amenity-item"><i class="fa fa-gamepad"></i><span>Play Area</span></div>
+            <div class="amenity-item"><i class="fa fa-dog"></i><span>Pet Friendly</span></div>
+            <div class="amenity-item"><i class="fa fa-snowflake"></i><span>Air Conditioned</span></div>
+          </div>
+
+          <div class="post-nav">
+            <button class="btn btn-outline" onclick="prevPostStep()"><i class="fa fa-arrow-left"></i> Previous</button>
+            <button class="btn btn-primary" onclick="nextPostStep()">Next Step <i class="fa fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Pricing & Contact -->
+        <div class="post-form-step" data-step="4">
+          <h3>Step 4: Pricing &amp; Contact Details</h3>
+          <p>Set your price and how buyers/tenants can reach you</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Expected Price / Rent (₹) *</label>
+              <input type="number" placeholder="e.g. 8500000" required />
+            </div>
+            <div class="form-group">
+              <label>Price Negotiable?</label>
+              <select>
+                <option>Yes, Negotiable</option>
+                <option>No, Fixed Price</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Security Deposit (For Rent)</label>
+              <input type="number" placeholder="e.g. 100000" />
+            </div>
+            <div class="form-group">
+              <label>Maintenance Charges</label>
+              <select>
+                <option value="">Select</option>
+                <option>Included in Rent</option>
+                <option>Extra – Monthly</option>
+                <option>Extra – Yearly</option>
+                <option>No Maintenance</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Available From</label>
+              <input type="date" />
+            </div>
+            <div class="form-group">
+              <label>Possession Status</label>
+              <select>
+                <option>Ready to Move</option>
+                <option>Under Construction</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="height:1px;background:var(--border);margin:2rem 0;"></div>
+          <h4 style="color:var(--primary);margin-bottom:1.25rem;font-size:1rem;"><i class="fa fa-user-circle"></i> Your Contact Details</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label>Mobile Number *</label>
+              <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Preferred Contact Time</label>
+              <select>
+                <option>Anytime</option>
+                <option>Morning (8AM – 12PM)</option>
+                <option>Afternoon (12PM – 5PM)</option>
+                <option>Evening (5PM – 9PM)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>You are a *</label>
+              <select required>
+                <option value="">Select</option>
+                <option>Owner</option>
+                <option>Builder / Developer</option>
+                <option>Property Manager</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="background:rgba(26,60,110,0.05); border:1px solid rgba(26,60,110,0.15); border-radius:var(--radius-sm); padding:1.25rem; margin:1.5rem 0; font-size:0.88rem; color:var(--text-light); display:flex; gap:0.75rem; align-items:flex-start;">
+            <i class="fa fa-info-circle" style="color:var(--primary); margin-top:2px; flex-shrink:0;"></i>
+            <span>By submitting this form, you agree to our <a href="#" style="color:var(--primary);font-weight:600;">Terms of Service</a> and <a href="#" style="color:var(--primary);font-weight:600;">Privacy Policy</a>. Your contact details will only be shared with verified enquirers.</span>
+          </div>
+
+          <div class="post-nav">
+            <button class="btn btn-outline" onclick="prevPostStep()"><i class="fa fa-arrow-left"></i> Previous</button>
+            <button class="btn btn-primary btn-lg" onclick="submitProperty()"><i class="fa fa-check-circle"></i> Submit Property FREE</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Success -->
+        <div class="post-form-step" data-step="5">
+          <div style="text-align:center; padding:2rem 0;">
+            <div style="width:90px;height:90px;background:linear-gradient(135deg,var(--success),#2ecc71);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2.5rem;color:#fff;box-shadow:0 8px 30px rgba(39,174,96,0.4);">
+              <i class="fa fa-check"></i>
+            </div>
+            <h3 style="color:var(--success);font-size:1.75rem;margin-bottom:0.75rem;">Property Listed Successfully!</h3>
+            <p style="color:var(--text-light);max-width:500px;margin:0 auto 2rem;line-height:1.8;">Your property has been submitted for review. Our team will verify and publish it within 24 hours. You'll receive a confirmation via SMS &amp; email.</p>
+            <div style="background:var(--bg-light);border-radius:var(--radius);padding:1.5rem;max-width:400px;margin:0 auto 2rem;text-align:left;">
+              <div style="display:flex;justify-content:space-between;font-size:0.88rem;margin-bottom:0.5rem;"><span style="color:var(--text-light);">Listing ID:</span><strong style="color:var(--primary);">#SGH-2026-08542</strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.88rem;margin-bottom:0.5rem;"><span style="color:var(--text-light);">Status:</span><strong style="color:var(--accent);">Under Review</strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.88rem;"><span style="color:var(--text-light);">Estimated Live By:</span><strong style="color:var(--text);">Within 24 hours</strong></div>
+            </div>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+              <a href="properties.html" class="btn btn-outline">View All Listings <i class="fa fa-arrow-right"></i></a>
+              <a href="index.html" class="btn btn-primary">Go to Homepage <i class="fa fa-home"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal" onclick="closeModalOutside(event, 'login-modal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('login-modal')"><i class="fa fa-times"></i></button>
+      <div class="modal-tabs">
+        <button class="modal-tab active" onclick="switchModalTab(this, 'login-tab')">Login</button>
+        <button class="modal-tab" onclick="switchModalTab(this, 'register-tab')">Register</button>
+      </div>
+      <div class="modal-body active" id="login-tab">
+        <h3>Welcome Back!</h3>
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group"><label>Mobile / Email</label><input type="text" required /></div>
+          <div class="form-group"><label>Password</label><input type="password" required /></div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+      <div class="modal-body" id="register-tab">
+        <h3>Create Account</h3>
+        <form onsubmit="handleRegister(event)">
+          <div class="form-group"><label>Full Name</label><input type="text" required /></div>
+          <div class="form-group"><label>Mobile</label><input type="tel" required /></div>
+          <div class="form-group"><label>Email</label><input type="email" required /></div>
+          <div class="form-group"><label>Password</label><input type="password" required /></div>
+          <button type="submit" class="btn btn-primary btn-block">Register Free</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fa fa-chevron-up"></i></button>
+
+  <script src="js/main.js"></script>
+  <script>
+    function submitProperty() {
+      // Validate last step
+      const lastStep = document.querySelector('.post-form-step[data-step="4"]');
+      if (!validateStep(lastStep)) return;
+
+      document.querySelectorAll('.post-form-step').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.post-step').forEach(s => {
+        s.classList.remove('active');
+        s.classList.add('completed');
+        s.querySelector('.post-step-num').innerHTML = '<i class="fa fa-check" style="font-size:0.75rem;"></i>';
+      });
+      const successStep = document.querySelector('.post-form-step[data-step="5"]');
+      if (successStep) successStep.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('<i class="fa fa-check-circle"></i> Property submitted successfully!', 'success');
+    }
+  </script>
+</body>
+</html>

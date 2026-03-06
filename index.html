@@ -1,0 +1,587 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SapthagiriHomes.com – Buy & Sell Property in Tirupathi, Renigunta & Chandragiri</title>
+  <meta name="description" content="Find your dream home with SapthagiriHomes. Buy and sell residential properties in Tirupathi, Renigunta and Chandragiri directly without paying any brokerage.">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fa fa-phone"></i> +91 90081 76314</span>
+        <span><i class="fa fa-envelope"></i> support@sapthagirihomes.com</span>
+      </div>
+      <div class="topbar-right">
+        <a href="post-property.html"><i class="fa fa-plus-circle"></i> Post FREE Property</a>
+        <a href="#login-modal" class="login-link" onclick="openModal('login-modal')"><i class="fa fa-user"></i> Login / Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="SapthagiriHomes – Homes with Divine Blessings" class="logo-img" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Buy <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="properties.html?type=buy&cat=apartment">Apartments</a>
+            <a href="properties.html?type=buy&cat=villa">Villas &amp; Houses</a>
+            <a href="properties.html?type=buy&cat=plot">Plots / Land</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Sell <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="properties.html?type=sell&cat=apartment">Sell Apartment</a>
+            <a href="properties.html?type=sell&cat=villa">Sell Villa / House</a>
+            <a href="properties.html?type=sell&cat=plot">Sell Plot / Land</a>
+          </div>
+        </li>
+        <li><a href="post-property.html">Post Property</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="post-property.html" class="btn btn-primary">Post FREE Ad</a>
+        <button class="hamburger" id="hamburger" onclick="toggleNav()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Find Your <span class="highlight">Dream Home</span><br/>Without Any Brokerage</h1>
+      <p>India's most trusted property portal. Connect directly with owners &amp; buyers. Save lakhs in brokerage fees.</p>
+
+      <!-- Search Tabs -->
+      <div class="search-box">
+        <div class="search-tabs">
+          <button class="tab-btn active" onclick="switchTab(this, 'buy')">Buy</button>
+          <button class="tab-btn" onclick="switchTab(this, 'sell')">Sell</button>
+        </div>
+        <div class="search-form">
+          <div class="search-city">
+            <i class="fa fa-map-marker-alt"></i>
+            <select id="citySelect">
+              <option value="">Select City</option>
+              <option>Tirupathi</option>
+              <option>Renigunta</option>
+              <option>Chandragiri</option>
+            </select>
+          </div>
+          <div class="search-input-wrap">
+            <input type="text" id="searchInput" placeholder="Search by locality, landmark or project name..." />
+            <i class="fa fa-search"></i>
+          </div>
+          <div class="search-filter-wrap" id="budgetFilter">
+            <select id="budgetSelect">
+              <option value="">Budget</option>
+              <option>Under ₹20 Lakhs</option>
+              <option>₹20L – ₹40L</option>
+              <option>₹40L – ₹60L</option>
+              <option>₹60L – ₹80L</option>
+              <option>₹80L – ₹1 Cr</option>
+              <option>₹1Cr – ₹2Cr</option>
+              <option>Above ₹2 Cr</option>
+            </select>
+          </div>
+          <button class="btn btn-search" onclick="doSearch()"><i class="fa fa-search"></i> Search</button>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div class="quick-links">
+        <span>Popular:</span>
+        <a href="properties.html?type=buy&city=Tirupathi">Tirupathi Flats</a>
+        <a href="properties.html?type=buy&city=Renigunta">Renigunta Villas</a>
+        <a href="properties.html?type=buy&city=Chandragiri">Chandragiri Plots</a>
+        <a href="properties.html?type=buy&cat=plot">Plots Near Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS SECTION ===== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3 class="counter" data-target="0">0</h3>
+          <p>Properties Listed</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="3">0</h3>
+          <p>Cities Covered</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="20">0</h3>
+          <p>Happy Customers</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="1">0</h3>
+          <p>Years of Trust</p>
+        </div>
+        <div class="stat-item">
+          <h3>ZERO</h3>
+          <p>Brokerage Fees</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROPERTY TYPE SECTION ===== -->
+  <section class="property-types section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Explore by <span class="highlight">Property Type</span></h2>
+        <p>Find the right property that fits your needs and budget</p>
+      </div>
+      <div class="type-grid">
+        <a href="properties.html?cat=apartment" class="type-card">
+          <div class="type-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+            <i class="fa fa-building"></i>
+          </div>
+          <h4>Apartments</h4>
+        </a>
+        <a href="properties.html?cat=villa" class="type-card">
+          <div class="type-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+            <i class="fa fa-home"></i>
+          </div>
+          <h4>Villas &amp; Houses</h4>
+        </a>
+        <a href="properties.html?cat=plot" class="type-card">
+          <div class="type-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+            <i class="fa fa-map"></i>
+          </div>
+          <h4>Plots / Land</h4>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works section">
+    <div class="container">
+      <div class="section-header">
+        <h2>How <span class="highlight">It Works</span></h2>
+        <p>Simple, transparent &amp; broker-free process in just 3 steps</p>
+      </div>
+      <div class="steps-tabs">
+        <button class="step-tab active" onclick="switchSteps(this, 'buy-steps')">Buy</button>
+        <button class="step-tab" onclick="switchSteps(this, 'sell-steps')">Sell</button>
+      </div>
+
+      <div class="steps-container active" id="buy-steps">
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-icon"><i class="fa fa-search"></i></div>
+            <h4>Search Property</h4>
+            <p>Browse thousands of verified properties in your preferred city, locality and budget. Use advanced filters to narrow your search.</p>
+          </div>
+          <div class="step-arrow"><i class="fa fa-chevron-right"></i></div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-icon"><i class="fa fa-phone-alt"></i></div>
+            <h4>Contact Owner</h4>
+            <p>Connect directly with property owners or builders — no middlemen, no hidden fees. Schedule visits at your convenience.</p>
+          </div>
+          <div class="step-arrow"><i class="fa fa-chevron-right"></i></div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-icon"><i class="fa fa-file-contract"></i></div>
+            <h4>Close the Deal</h4>
+            <p>Finalise the deal with our legal assistance, home loan help, and documentation support. Move in hassle-free!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps-container" id="sell-steps">
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-icon"><i class="fa fa-camera"></i></div>
+            <h4>List Your Property</h4>
+            <p>Post your property for FREE with photos, description and key details. Reach lakhs of serious buyers &amp; renters instantly.</p>
+          </div>
+          <div class="step-arrow"><i class="fa fa-chevron-right"></i></div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-icon"><i class="fa fa-users"></i></div>
+            <h4>Get Enquiries</h4>
+            <p>Genuine buyers &amp; tenants will contact you directly. Manage all enquiries from your dashboard conveniently.</p>
+          </div>
+          <div class="step-arrow"><i class="fa fa-chevron-right"></i></div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-icon"><i class="fa fa-handshake"></i></div>
+            <h4>Seal the Deal</h4>
+            <p>Negotiate directly, finalize the price, and complete the transaction with our end-to-end legal and documentation support.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiw-cta">
+        <a href="post-property.html" class="btn btn-primary btn-lg">Post Your Property FREE <i class="fa fa-arrow-right"></i></a>
+        <a href="properties.html" class="btn btn-outline btn-lg">Search Properties <i class="fa fa-search"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES SECTION ===== -->
+  <section class="services section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our <span class="highlight">Services</span></h2>
+        <p>Everything you need for a smooth property experience — all under one roof</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="svc-icon" style="color: #1a3c6e;"><i class="fa fa-truck-moving"></i></div>
+          <h4>Packers &amp; Movers</h4>
+          <p>Reliable, verified moving services at competitive prices. Fully insured &amp; GPS tracked.</p>
+          <a href="#" class="svc-link">Know More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon" style="color: #e74c3c;"><i class="fa fa-hand-holding-usd"></i></div>
+          <h4>Home Loans</h4>
+          <p>Get the best home loan deals from 25+ banks. Quick approval, minimal paperwork.</p>
+          <a href="#" class="svc-link">Know More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon" style="color: #f4a832;"><i class="fa fa-gavel"></i></div>
+          <h4>Legal Assistance</h4>
+          <p>Expert legal advice for property registration, agreements, and dispute resolution.</p>
+          <a href="#" class="svc-link">Know More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon" style="color: #27ae60;"><i class="fa fa-paint-roller"></i></div>
+          <h4>Interior Design</h4>
+          <p>Transform your new home with our empaneled interior design experts.</p>
+          <a href="#" class="svc-link">Know More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon" style="color: #9b59b6;"><i class="fa fa-file-alt"></i></div>
+          <h4>Rental Agreement</h4>
+          <p>Create legally valid, e-stamped rental agreements online in minutes.</p>
+          <a href="#" class="svc-link">Know More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon" style="color: #e67e22;"><i class="fa fa-shield-alt"></i></div>
+          <h4>Property Insurance</h4>
+          <p>Protect your investment with comprehensive home and property insurance plans.</p>
+          <a href="#" class="svc-link">Know More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon" style="color: #2980b9;"><i class="fa fa-calculator"></i></div>
+          <h4>EMI Calculator</h4>
+          <p>Plan your finances smartly. Calculate home loan EMI &amp; affordability instantly.</p>
+          <a href="#" class="svc-link">Try Now <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon" style="color: #16a085;"><i class="fa fa-tools"></i></div>
+          <h4>Home Services</h4>
+          <p>Electricians, plumbers, carpenters &amp; more — professional home maintenance.</p>
+          <a href="#" class="svc-link">Know More <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== POPULAR CITIES ===== -->
+  <section class="popular-cities section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Properties Across <span class="highlight">Top Cities</span></h2>
+        <p>Explore thousands of properties in India's most sought-after cities</p>
+      </div>
+      <div class="cities-grid cities-grid-3">
+        <a href="properties.html?city=Tirupathi" class="city-card">
+          <div class="city-bg city-tpt"></div>
+          <div class="city-info">
+            <h4>Tirupathi</h4>
+            <span id="city-count-tirupathi">0 Properties</span>
+          </div>
+        </a>
+        <a href="properties.html?city=Renigunta" class="city-card">
+          <div class="city-bg city-ren"></div>
+          <div class="city-info">
+            <h4>Renigunta</h4>
+            <span id="city-count-renigunta">0 Properties</span>
+          </div>
+        </a>
+        <a href="properties.html?city=Chandragiri" class="city-card">
+          <div class="city-bg city-chan"></div>
+          <div class="city-info">
+            <h4>Chandragiri</h4>
+            <span id="city-count-chandragiri">0 Properties</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our <span class="highlight">Customers Say</span></h2>
+        <p>Real stories from real people who found their dream homes with us</p>
+      </div>
+      <div class="testimonials-slider" id="testimonialsSlider">
+        <!-- Reviews are loaded dynamically from main.js -->
+      </div>
+
+      <div class="slider-controls" id="sliderControls" style="display:none;">
+        <button onclick="prevSlide()"><i class="fa fa-chevron-left"></i></button>
+        <div class="slider-dots" id="sliderDots"></div>
+        <button onclick="nextSlide()"><i class="fa fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EMI CALCULATOR ===== -->
+  <section class="emi-calculator section">
+    <div class="container">
+      <div class="calc-wrapper">
+        <div class="calc-left">
+          <h2>Home Loan <span class="highlight">EMI Calculator</span></h2>
+          <p>Plan your finances before buying your dream home. Use our free EMI calculator.</p>
+          <div class="calc-form">
+            <div class="calc-group">
+              <label>Loan Amount (₹)</label>
+              <input type="range" id="loanAmt" min="500000" max="50000000" step="100000" value="5000000" oninput="calcEMI()"/>
+              <div class="range-val">₹ <span id="loanAmtVal">50,00,000</span></div>
+            </div>
+            <div class="calc-group">
+              <label>Interest Rate (% per annum)</label>
+              <input type="range" id="interestRate" min="5" max="20" step="0.1" value="8.5" oninput="calcEMI()"/>
+              <div class="range-val"><span id="rateVal">8.5</span>%</div>
+            </div>
+            <div class="calc-group">
+              <label>Loan Tenure (Years)</label>
+              <input type="range" id="tenureYrs" min="1" max="30" step="1" value="20" oninput="calcEMI()"/>
+              <div class="range-val"><span id="tenureVal">20</span> Years</div>
+            </div>
+          </div>
+        </div>
+        <div class="calc-right">
+          <div class="emi-result">
+            <div class="emi-monthly">
+              <p>Monthly EMI</p>
+              <h2>₹ <span id="emiResult">43,391</span></h2>
+            </div>
+            <div class="emi-breakdown">
+              <div class="emi-breakdown-item">
+                <span class="dot-indicator" style="background:#1a3c6e;"></span>
+                <span>Principal Amount</span>
+                <strong>₹ <span id="principalDisp">50,00,000</span></strong>
+              </div>
+              <div class="emi-breakdown-item">
+                <span class="dot-indicator" style="background:#f4a832;"></span>
+                <span>Total Interest</span>
+                <strong>₹ <span id="interestDisp">54,13,840</span></strong>
+              </div>
+              <div class="emi-breakdown-item">
+                <span class="dot-indicator" style="background:#e74c3c;"></span>
+                <span>Total Payment</span>
+                <strong>₹ <span id="totalDisp">1,04,13,840</span></strong>
+              </div>
+            </div>
+            <a href="#" class="btn btn-primary btn-block">Apply for Home Loan <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter section">
+    <div class="container">
+      <div class="newsletter-wrap">
+        <div class="nl-left">
+          <h3>Stay Updated with Latest Properties</h3>
+          <p>Get new property alerts, market trends &amp; exclusive deals right in your inbox.</p>
+        </div>
+        <div class="nl-right">
+          <form class="nl-form" onsubmit="subscribeNewsletter(event)">
+            <input type="email" placeholder="Enter your email address" required />
+            <button type="submit" class="btn btn-primary">Subscribe <i class="fa fa-paper-plane"></i></button>
+          </form>
+          <p class="nl-note"><i class="fa fa-lock"></i> We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="logo">
+            <img src="images/logo.svg" alt="SapthagiriHomes – Homes with Divine Blessings" class="logo-img" />
+          </a>
+          <p>Tirupathi's trusted broker-free property portal. Buy and sell properties directly. Zero brokerage, maximum savings.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Buy Property</h5>
+          <ul>
+            <li><a href="properties.html?type=buy&cat=apartment">Apartments for Sale</a></li>
+            <li><a href="properties.html?type=buy&cat=villa">Villas for Sale</a></li>
+            <li><a href="properties.html?type=buy&cat=plot">Plots for Sale</a></li>
+            <li><a href="properties.html?type=buy&cat=commercial">Commercial Property</a></li>
+            <li><a href="properties.html?type=new">New Projects</a></li>
+            <li><a href="properties.html?type=buy&budget=affordable">Affordable Homes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Sell Property</h5>
+          <ul>
+            <li><a href="properties.html?type=sell&cat=apartment">Sell Apartment</a></li>
+            <li><a href="properties.html?type=sell&cat=villa">Sell Villa / House</a></li>
+            <li><a href="properties.html?type=sell&cat=plot">Sell Plot / Land</a></li>
+            <li><a href="post-property.html">Post FREE Listing</a></li>
+            <li><a href="post-property.html">Pricing Plans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#">Packers &amp; Movers</a></li>
+            <li><a href="#">Home Loans</a></li>
+            <li><a href="#">Legal Assistance</a></li>
+            <li><a href="#">Interior Design</a></li>
+            <li><a href="#">Rental Agreement</a></li>
+            <li><a href="#">Property Insurance</a></li>
+            <li><a href="#">Home Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press / Media</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+          <h5 style="margin-top:1.5rem;">Legal</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-cities">
+        <strong>Properties in:</strong>
+        <a href="properties.html?city=Tirupathi">Tirupathi</a>|
+        <a href="properties.html?city=Renigunta">Renigunta</a>|
+        <a href="properties.html?city=Chandragiri">Chandragiri</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SapthagiriHomes.com — All rights reserved. | RERA Registered</p>
+        <p>Made with <i class="fa fa-heart" style="color:#e74c3c;"></i> in India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== LOGIN MODAL ===== -->
+  <div class="modal-overlay" id="login-modal" onclick="closeModalOutside(event, 'login-modal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('login-modal')"><i class="fa fa-times"></i></button>
+      <div class="modal-tabs">
+        <button class="modal-tab active" onclick="switchModalTab(this, 'login-tab')">Login</button>
+        <button class="modal-tab" onclick="switchModalTab(this, 'register-tab')">Register</button>
+      </div>
+      <div class="modal-body active" id="login-tab">
+        <h3>Welcome Back!</h3>
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label>Mobile Number / Email</label>
+            <input type="text" placeholder="+91 XXXXX XXXXX or email@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" required />
+          </div>
+          <div class="form-row">
+            <label class="checkbox-label"><input type="checkbox" /> Remember me</label>
+            <a href="#" class="forgot-link">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <div class="or-divider"><span>OR</span></div>
+        <button class="btn btn-social google-btn"><i class="fab fa-google"></i> Continue with Google</button>
+        <button class="btn btn-social fb-btn"><i class="fab fa-facebook-f"></i> Continue with Facebook</button>
+      </div>
+      <div class="modal-body" id="register-tab">
+        <h3>Create Your Account</h3>
+        <form onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Create a strong password" required />
+          </div>
+          <div class="form-group">
+            <label>I am a</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="usertype" value="buyer" checked /> Buyer/Tenant</label>
+              <label class="radio-label"><input type="radio" name="usertype" value="owner" /> Owner</label>
+              <label class="radio-label"><input type="radio" name="usertype" value="builder" /> Builder</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Register Free</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fa fa-chevron-up"></i></button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

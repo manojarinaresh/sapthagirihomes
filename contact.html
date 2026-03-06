@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – SapthagiriHomes.com</title>
+  <meta name="description" content="Get in touch with SapthagiriHomes for property enquiries, support, and business partnerships.">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fa fa-phone"></i> +91 90081 76314</span>
+        <span><i class="fa fa-envelope"></i> support@sapthagirihomes.com</span>
+      </div>
+      <div class="topbar-right">
+        <a href="post-property.html"><i class="fa fa-plus-circle"></i> Post FREE Property</a>
+        <a href="#" onclick="openModal('login-modal')"><i class="fa fa-user"></i> Login / Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="SapthagiriHomes – Homes with Divine Blessings" class="logo-img" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Buy <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="properties.html?type=buy&cat=apartment">Apartments</a>
+            <a href="properties.html?type=buy&cat=villa">Villas &amp; Houses</a>
+            <a href="properties.html?type=buy&cat=plot">Plots</a>
+          </div>
+        </li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="post-property.html">Post Property</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="post-property.html" class="btn btn-primary">Post FREE Ad</a>
+        <button class="hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa fa-chevron-right"></i>
+        <span>Contact Us</span>
+      </div>
+      <h1>Contact Us</h1>
+      <p>We're here to help. Reach out for any property queries, support or partnerships.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT -->
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: Contact Info -->
+      <div class="contact-info">
+        <h2>Get in <span class="highlight">Touch</span></h2>
+        <p>Have questions about buying, selling or renting? Our team of experts is available 7 days a week to assist you with your property journey. Reach out via any of the channels below.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fa fa-phone-alt"></i></div>
+          <div>
+            <h4>Phone / WhatsApp</h4>
+            <p>+91 90081 76314</p>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">Mon – Sat · 9:00 AM – 7:00 PM</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon" style="background:rgba(231,76,60,0.1);"><i class="fa fa-envelope" style="color:var(--danger);"></i></div>
+          <div>
+            <h4>Email Support</h4>
+            <p>support@sapthagirihomes.com</p>
+            <p>business@sapthagirihomes.com</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon" style="background:rgba(244,168,50,0.1);"><i class="fa fa-map-marker-alt" style="color:var(--accent);"></i></div>
+          <div>
+            <h4>Head Office</h4>
+            <p>SapthagiriHomes Pvt. Ltd.<br/>
+            Plot No. 24, Road No. 36,<br/>
+            Jubilee Hills, Hyderabad – 500 033<br/>
+            Telangana, India</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon" style="background:rgba(39,174,96,0.1);"><i class="fa fa-clock" style="color:var(--success);"></i></div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Monday – Friday: 9:00 AM – 7:00 PM</p>
+            <p>Saturday: 9:00 AM – 5:00 PM</p>
+            <p>Sunday: 10:00 AM – 2:00 PM</p>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div style="margin-top:2rem;">
+          <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.75rem;">Follow Us</h4>
+          <div class="social-links" style="flex-wrap:wrap;">
+            <a href="#" style="background:rgba(24,119,242,0.1);border-color:rgba(24,119,242,0.3);color:#1877f2;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="background:rgba(29,161,242,0.1);border-color:rgba(29,161,242,0.3);color:#1da1f2;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="background:rgba(225,48,108,0.1);border-color:rgba(225,48,108,0.3);color:#e1306c;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="background:rgba(0,119,181,0.1);border-color:rgba(0,119,181,0.3);color:#0077b5;" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" style="background:rgba(255,0,0,0.1);border-color:rgba(255,0,0,0.3);color:#ff0000;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Map Placeholder -->
+        <div class="map-placeholder">
+          <div style="text-align:center;">
+            <i class="fa fa-map-marked-alt" style="font-size:3.5rem;color:rgba(255,255,255,0.5);display:block;margin-bottom:0.75rem;"></i>
+            <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);">Jubilee Hills, Hyderabad</p>
+            <a href="#" style="color:var(--accent);font-size:0.85rem;font-weight:600;margin-top:0.5rem;display:inline-block;"><i class="fa fa-external-link-alt"></i> View on Maps</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="contact-form-card">
+        <h3>Send Us a Message</h3>
+        <form id="contactForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label>Mobile Number *</label>
+              <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+            <div class="form-group form-full">
+              <label>Email Address *</label>
+              <input type="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group form-full">
+              <label>I am a</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="contact_type" value="buyer" checked /> Buyer / Tenant</label>
+                <label class="radio-label"><input type="radio" name="contact_type" value="owner" /> Owner / Seller</label>
+                <label class="radio-label"><input type="radio" name="contact_type" value="builder" /> Builder</label>
+                <label class="radio-label"><input type="radio" name="contact_type" value="other" /> Other</label>
+              </div>
+            </div>
+            <div class="form-group form-full">
+              <label>Subject *</label>
+              <select required style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.92rem;color:var(--text);outline:none;background:var(--bg-light);">
+                <option value="">Select Subject</option>
+                <option>Property Enquiry</option>
+                <option>Listing Support</option>
+                <option>Report Fraud / Fake Listing</option>
+                <option>Home Loan Enquiry</option>
+                <option>Legal Assistance</option>
+                <option>Packers &amp; Movers</option>
+                <option>Business / Partnership</option>
+                <option>Technical Issue</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group form-full">
+              <label>Message *</label>
+              <textarea placeholder="Tell us how we can help you..." required style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-family:var(--font);font-size:0.92rem;color:var(--text);background:var(--bg-light);outline:none;resize:vertical;min-height:150px;transition:var(--transition);"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:0.5rem;">Send Message <i class="fa fa-paper-plane"></i></button>
+          <p style="text-align:center;font-size:0.78rem;color:var(--text-muted);margin-top:1rem;"><i class="fa fa-lock"></i> Your information is 100% secure and will never be shared.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked <span class="highlight">Questions</span></h2>
+        <p>Quick answers to common questions about SapthagiriHomes</p>
+      </div>
+      <div style="max-width:800px; margin:0 auto;">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">
+            Is it really free to post a property on SapthagiriHomes? <i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">
+            <p>Yes, absolutely! Posting your property on SapthagiriHomes is 100% free. We believe in connecting buyers and sellers directly without any brokerage. You can list your property for sale or rent completely free of charge. We do offer premium boosting options to get more visibility, but basic listing is always free.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">
+            How do I contact a property owner / seller? <i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">
+            <p>Simply browse the property listings and click "Contact Owner" on any listing that interests you. You can send a message directly, and the owner will get back to you. You may also need to log in / register a free account to view contact details. There is absolutely no brokerage charged for this.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">
+            How long does it take for my property listing to go live? <i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">
+            <p>After you submit your property, our team verifies the details and photos to ensure quality. This process typically takes 24–48 hours. Once approved, your listing will be live and visible to thousands of verified buyers and renters. You'll receive an SMS and email confirmation when it goes live.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">
+            Is SapthagiriHomes available across all cities in India? <i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">
+            <p>We currently operate in 25+ major cities across India including Hyderabad, Bangalore, Chennai, Mumbai, Delhi, Pune, Kolkata, Ahmedabad, Jaipur, Kochi, and more. We are continuously expanding to new cities. You can still list or search properties in other cities, though verification support may be limited.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">
+            How do I report a fraudulent/fake listing? <i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">
+            <p>Your safety is our priority. If you come across a listing that seems fraudulent or suspicious, please use the "Report" button on the property page or contact us directly at support@sapthagirihomes.com with the listing ID. Our trust & safety team will investigate and take action within 24 hours.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">
+            Can you help with home loans and legal documentation? <i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">
+            <p>Yes! We offer a range of value-added services including home loan assistance (tied up with 25+ banks for best rates), legal documentation, property registration support, and rental agreement creation. These services are offered through our empaneled partners at competitive rates. Contact us to know more.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (simplified) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="logo">
+            <img src="images/logo.svg" alt="SapthagiriHomes – Homes with Divine Blessings" class="logo-img" />
+          </a>
+          <p>India's trusted broker-free property portal. Zero brokerage, maximum savings.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="properties.html">Search Properties</a></li>
+            <li><a href="post-property.html">Post Property</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#">Home Loans</a></li>
+            <li><a href="#">Legal Help</a></li>
+            <li><a href="#">Packers &amp; Movers</a></li>
+            <li><a href="#">Interior Design</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SapthagiriHomes.com — All rights reserved.</p>
+        <p>Made with <i class="fa fa-heart" style="color:#e74c3c;"></i> in India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal" onclick="closeModalOutside(event, 'login-modal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('login-modal')"><i class="fa fa-times"></i></button>
+      <div class="modal-tabs">
+        <button class="modal-tab active" onclick="switchModalTab(this, 'login-tab')">Login</button>
+        <button class="modal-tab" onclick="switchModalTab(this, 'register-tab')">Register</button>
+      </div>
+      <div class="modal-body active" id="login-tab">
+        <h3>Welcome Back!</h3>
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group"><label>Mobile / Email</label><input type="text" required /></div>
+          <div class="form-group"><label>Password</label><input type="password" required /></div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+      <div class="modal-body" id="register-tab">
+        <h3>Create Account</h3>
+        <form onsubmit="handleRegister(event)">
+          <div class="form-group"><label>Full Name</label><input type="text" required /></div>
+          <div class="form-group"><label>Mobile</label><input type="tel" required /></div>
+          <div class="form-group"><label>Email</label><input type="email" required /></div>
+          <div class="form-group"><label>Password</label><input type="password" required /></div>
+          <button type="submit" class="btn btn-primary btn-block">Register Free</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fa fa-chevron-up"></i></button>
+
+  <!-- FAQ styles -->
+  <style>
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 0.75rem; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; padding: 1.1rem 1.5rem; font-size: 0.95rem; font-weight: 600; color: var(--text); background: #fff; display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; transition: var(--transition); }
+    .faq-q:hover { background: var(--bg-light); color: var(--primary); }
+    .faq-q.open { color: var(--primary); background: rgba(26,60,110,0.04); }
+    .faq-q.open i { transform: rotate(180deg); }
+    .faq-q i { font-size: 0.8rem; flex-shrink: 0; transition: transform 0.3s ease; color: var(--text-muted); }
+    .faq-a { display: none; padding: 0 1.5rem 1.25rem; }
+    .faq-a.open { display: block; animation: fadeIn 0.25s ease; }
+    .faq-a p { font-size: 0.9rem; color: var(--text-light); line-height: 1.8; }
+  </style>
+
+  <script src="js/main.js"></script>
+  <script>
+    function toggleFAQ(btn) {
+      const item   = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = btn.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-q.open').forEach(q => {
+        q.classList.remove('open');
+        q.closest('.faq-item').querySelector('.faq-a').classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>

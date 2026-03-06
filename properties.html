@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Properties – SapthagiriHomes.com</title>
+  <meta name="description" content="Search verified properties for sale and rent across India. No broker fees. Direct owner contact.">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fa fa-phone"></i> +91 90081 76314</span>
+        <span><i class="fa fa-envelope"></i> support@sapthagirihomes.com</span>
+      </div>
+      <div class="topbar-right">
+        <a href="post-property.html"><i class="fa fa-plus-circle"></i> Post FREE Property</a>
+        <a href="#login-modal" onclick="openModal('login-modal')"><i class="fa fa-user"></i> Login / Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="SapthagiriHomes – Homes with Divine Blessings" class="logo-img" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Buy <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="properties.html?type=buy&cat=apartment">Apartments</a>
+            <a href="properties.html?type=buy&cat=villa">Villas &amp; Houses</a>
+            <a href="properties.html?type=buy&cat=plot">Plots / Land</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Sell <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="properties.html?type=sell&cat=apartment">Sell Apartment</a>
+            <a href="properties.html?type=sell&cat=villa">Sell Villa / House</a>
+            <a href="properties.html?type=sell&cat=plot">Sell Plot / Land</a>
+          </div>
+        </li>
+        <li><a href="post-property.html">Post Property</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="post-property.html" class="btn btn-primary">Post FREE Ad</a>
+        <button class="hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa fa-chevron-right"></i>
+        <span>Properties</span>
+      </div>
+      <h1>Properties in Tirupathi, Renigunta &amp; Chandragiri</h1>
+      <p><span id="total-listings-count">0</span> verified listings · Direct owner contact · Zero brokerage</p>
+    </div>
+  </section>
+
+  <!-- SEARCH BAR on listing page -->
+  <div class="listing-search-bar">
+    <div class="container">
+      <div class="search-form" style="background:#fff; padding:0.75rem; border-radius:var(--radius); box-shadow:var(--shadow);">
+        <div class="search-city">
+          <i class="fa fa-map-marker-alt"></i>
+          <select id="citySelect">
+            <option value="">All Cities</option>
+            <option>Tirupathi</option>
+            <option>Renigunta</option>
+            <option>Chandragiri</option>
+          </select>
+        </div>
+        <div class="search-input-wrap">
+          <input type="text" id="searchInput" placeholder="Search by locality, project, landmark..." />
+          <i class="fa fa-search"></i>
+        </div>
+        <div class="search-filter-wrap">
+          <select id="budgetSelect">
+            <option value="">Budget</option>
+            <option>Under ₹20 Lakhs</option>
+            <option>₹20L – ₹40L</option>
+            <option>₹40L – ₹60L</option>
+            <option>₹60L – ₹80L</option>
+            <option>Above ₹1 Cr</option>
+          </select>
+        </div>
+        <button class="btn btn-search" onclick="doSearch()"><i class="fa fa-search"></i> Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT: Sidebar + Listings -->
+  <div class="container">
+    <div class="properties-layout">
+
+      <!-- FILTER SIDEBAR -->
+      <aside class="filter-sidebar">
+        <h3>Filters <button onclick="resetFilters()">Reset All</button></h3>
+
+        <div class="filter-group">
+          <label>Looking For</label>
+          <div class="filter-chips">
+            <button class="filter-chip active">Buy</button>
+            <button class="filter-chip">Sell</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Property Type</label>
+          <div class="filter-chips">
+            <button class="filter-chip">Apartment</button>
+            <button class="filter-chip">Villa</button>
+            <button class="filter-chip">Plot</button>
+            <button class="filter-chip">House</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>BHK / Bedroom</label>
+          <div class="filter-chips">
+            <button class="filter-chip">1 RK</button>
+            <button class="filter-chip">1 BHK</button>
+            <button class="filter-chip">2 BHK</button>
+            <button class="filter-chip">3 BHK</button>
+            <button class="filter-chip">4+ BHK</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Budget Range</label>
+          <div class="filter-range">
+            <input type="text" placeholder="Min (₹)" id="minPrice" />
+            <span>to</span>
+            <input type="text" placeholder="Max (₹)" id="maxPrice" />
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Area (sq.ft)</label>
+          <div class="filter-range">
+            <input type="text" placeholder="Min" />
+            <span>to</span>
+            <input type="text" placeholder="Max" />
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Furnishing</label>
+          <div class="filter-chips">
+            <button class="filter-chip">Furnished</button>
+            <button class="filter-chip">Semi-Furnished</button>
+            <button class="filter-chip">Unfurnished</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Posted By</label>
+          <div class="filter-chips">
+            <button class="filter-chip">Owner</button>
+            <button class="filter-chip">Builder</button>
+            <button class="filter-chip">Agent</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Amenities</label>
+          <div class="filter-chips">
+            <button class="filter-chip"><i class="fa fa-swimming-pool"></i> Pool</button>
+            <button class="filter-chip"><i class="fa fa-dumbbell"></i> Gym</button>
+            <button class="filter-chip"><i class="fa fa-car"></i> Parking</button>
+            <button class="filter-chip"><i class="fa fa-shield-alt"></i> Security</button>
+            <button class="filter-chip"><i class="fa fa-bolt"></i> Power Backup</button>
+            <button class="filter-chip"><i class="fa fa-leaf"></i> Garden</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="applyFilters()">Apply Filters <i class="fa fa-filter"></i></button>
+      </aside>
+
+      <!-- PROPERTY LISTINGS -->
+      <main>
+        <div class="props-header">
+          <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
+            <select class="sort-select" onchange="sortProps(this.value)">
+              <option value="relevance">Sort: Relevance</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+              <option value="area-desc">Area: Largest First</option>
+            </select>
+            <div class="view-toggle">
+              <button class="view-btn active" data-view="grid" title="Grid View"><i class="fa fa-th"></i></button>
+              <button class="view-btn" data-view="list" title="List View"><i class="fa fa-list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="props-grid" id="propsListGrid">
+
+          <p style="text-align:center; padding:3rem; color:var(--text-light); font-size:1.1rem;"><i class="fa fa-search" style="font-size:2.5rem; display:block; margin-bottom:1rem; opacity:0.3;"></i>No properties listed yet. Check back soon!</p>
+
+        </div><!-- /.props-grid -->
+
+        
+      </main>
+    </div>
+  </div>
+
+  <!-- Contact Owner Modal -->
+  <div class="modal-overlay" id="contact-modal" onclick="closeModalOutside(event, 'contact-modal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('contact-modal')"><i class="fa fa-times"></i></button>
+      <h3 style="color:var(--primary); margin-bottom:0.5rem;">Contact Owner</h3>
+      <p style="color:var(--text-light); font-size:0.88rem; margin-bottom:1.5rem;" id="contactPropTitle">Property Name</p>
+      <div style="background:var(--bg-light); border-radius:var(--radius-sm); padding:1.25rem; margin-bottom:1.5rem; display:flex; align-items:center; gap:1rem;">
+        <div style="width:50px;height:50px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.25rem;flex-shrink:0;">
+          <i class="fa fa-user"></i>
+        </div>
+        <div>
+          <strong id="contactOwnerName" style="color:var(--text);">Owner Name</strong>
+          <p style="font-size:0.82rem;color:var(--text-light);margin:0;">Verified Owner · Member since 2022</p>
+        </div>
+      </div>
+      <form onsubmit="sendEnquiry(event)">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem;font-family:var(--font);resize:vertical;min-height:90px;font-size:0.9rem;outline:none;" placeholder="I'm interested in this property. Please contact me."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send Enquiry <i class="fa fa-paper-plane"></i></button>
+      </form>
+      <p style="font-size:0.78rem;color:var(--text-muted);text-align:center;margin-top:1rem;"><i class="fa fa-lock"></i> Your details are safe &amp; won't be shared without consent.</p>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal" onclick="closeModalOutside(event, 'login-modal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('login-modal')"><i class="fa fa-times"></i></button>
+      <div class="modal-tabs">
+        <button class="modal-tab active" onclick="switchModalTab(this, 'login-tab')">Login</button>
+        <button class="modal-tab" onclick="switchModalTab(this, 'register-tab')">Register</button>
+      </div>
+      <div class="modal-body active" id="login-tab">
+        <h3>Welcome Back!</h3>
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group"><label>Mobile / Email</label><input type="text" placeholder="Mobile or email" required /></div>
+          <div class="form-group"><label>Password</label><input type="password" placeholder="Password" required /></div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+      <div class="modal-body" id="register-tab">
+        <h3>Create Account</h3>
+        <form onsubmit="handleRegister(event)">
+          <div class="form-group"><label>Full Name</label><input type="text" required /></div>
+          <div class="form-group"><label>Mobile</label><input type="tel" required /></div>
+          <div class="form-group"><label>Email</label><input type="email" required /></div>
+          <div class="form-group"><label>Password</label><input type="password" required /></div>
+          <button type="submit" class="btn btn-primary btn-block">Register Free</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fa fa-chevron-up"></i></button>
+
+  <!-- Extra styles for listing page -->
+  <style>
+    .listing-search-bar { background: var(--primary); padding: 1rem 0; }
+    .pagination { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .page-btn { min-width: 40px; height: 40px; border-radius: var(--radius-sm); border: 1.5px solid var(--border); font-size: 0.9rem; font-weight: 600; color: var(--text-light); cursor: pointer; transition: var(--transition); background: #fff; padding: 0 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .page-btn:hover, .page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .page-btn.next { gap: 0.5rem; padding: 0 1rem; }
+    .props-grid.list-view { grid-template-columns: 1fr; }
+    .props-grid.list-view .prop-card { display: flex; flex-direction: row; }
+    .props-grid.list-view .prop-img { width: 260px; flex-shrink: 0; }
+    .props-grid.list-view .prop-info { flex: 1; }
+    @media (max-width: 600px) { .props-grid.list-view .prop-card { flex-direction: column; } .props-grid.list-view .prop-img { width: 100%; } }
+  </style>
+
+  <script src="js/main.js"></script>
+  <script>
+    function showContactModal(owner, prop) {
+      document.getElementById('contactOwnerName').textContent = owner;
+      document.getElementById('contactPropTitle').textContent = prop;
+      openModal('contact-modal');
+    }
+    function sendEnquiry(e) {
+      e.preventDefault();
+      showToast('<i class="fa fa-check-circle"></i> Enquiry sent! The owner will contact you shortly.', 'success');
+      closeModal('contact-modal');
+    }
+    function applyFilters() {
+      showToast('<i class="fa fa-filter"></i> Filters applied! Showing matching properties.', 'success');
+    }
+    function resetFilters() {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      showToast('All filters have been reset.', '');
+    }
+    function sortProps(val) {
+      showToast('<i class="fa fa-sort"></i> Properties sorted by: ' + val.replace(/-/g, ' '), '');
+    }
+    document.querySelectorAll('.page-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (!this.classList.contains('next')) {
+          document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

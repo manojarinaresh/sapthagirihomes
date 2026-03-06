@@ -163,6 +163,8 @@ input, select, textarea { font-family: var(--font); }
   font-weight: 600;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  flex: 1;
+  justify-content: center;
 }
 .topbar-center i { font-size: 1.1rem; animation: templeGlow 2.5s ease-in-out infinite alternate; }
 @keyframes templeGlow {
@@ -1712,7 +1714,6 @@ input, select, textarea { font-family: var(--font); }
   .filter-sidebar-body.open { display: block; }
   .contact-layout  { grid-template-columns: 1fr; }
   .footer-grid     { grid-template-columns: repeat(2, 1fr); }
-  .topbar-center   { display: none; }
   .topbar-left     { display: none; }
 }
 @media (max-width: 768px) {
@@ -1757,8 +1758,7 @@ input, select, textarea { font-family: var(--font); }
   .btn             { min-height: 44px; }
   .filter-chips    { gap: 0.5rem; }
   .filter-chip     { min-height: 36px; display: flex; align-items: center; justify-content: center; }
-  .topbar-center   { display: none; }
-  .contact-layout  { gap: 1.5rem; }
+  .logo-img        { height: 60px; }
   .section-header  { margin-bottom: 2rem; }
   .logo-img        { height: 60px; }
 }

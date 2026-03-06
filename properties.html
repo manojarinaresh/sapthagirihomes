@@ -115,9 +115,13 @@
 
       <!-- FILTER SIDEBAR -->
       <aside class="filter-sidebar">
-        <h3>Filters <button onclick="resetFilters()">Reset All</button></h3>
-
-        <div class="filter-group">
+        <h3>
+          Filters <button onclick="resetFilters()">Reset All</button>
+          <button class="filter-sidebar-toggle" onclick="toggleFilterSidebar()" aria-label="Toggle Filters">
+            <i class="fa fa-sliders-h"></i> <span id="filter-toggle-text">Show Filters</span>
+          </button>
+        </h3>
+        <div class="filter-sidebar-body" id="filterSidebarBody">
           <label>Looking For</label>
           <div class="filter-chips">
             <button class="filter-chip active">Buy</button>
@@ -195,6 +199,7 @@
         </div>
 
         <button class="btn btn-primary btn-block" onclick="applyFilters()">Apply Filters <i class="fa fa-filter"></i></button>
+        </div><!-- end filter-sidebar-body -->
       </aside>
 
       <!-- PROPERTY LISTINGS -->
@@ -323,6 +328,12 @@
     function resetFilters() {
       document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
       showToast('All filters have been reset.', '');
+    }
+    function toggleFilterSidebar() {
+      const body = document.getElementById('filterSidebarBody');
+      const txt  = document.getElementById('filter-toggle-text');
+      const isOpen = body.classList.toggle('open');
+      txt.textContent = isOpen ? 'Hide Filters' : 'Show Filters';
     }
     function sortProps(val) {
       showToast('<i class="fa fa-sort"></i> Properties sorted by: ' + val.replace(/-/g, ' '), '');

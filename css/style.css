@@ -277,9 +277,12 @@ input, select, textarea { font-family: var(--font); }
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Tirumala hills — primary: Wikimedia Commons actual Tirumala photo; fallback: Eastern Ghats green hills gradient */
   background:
-    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85') center/cover no-repeat,
-    linear-gradient(160deg, #0f2240 0%, #1e3a5f 50%, #1b5e35 100%);
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Tirumala_hills_view_from_Tirupati.jpg') center 40%/cover no-repeat,
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Natural_stone_arch_in_tirumala.JPG') center/cover no-repeat,
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Tirumala_ghat_road.jpg/1280px-Tirumala_ghat_road.jpg') center/cover no-repeat,
+    linear-gradient(160deg, #1b3a10 0%, #2d6a1a 25%, #4a8f28 50%, #6b5a1a 75%, #8b3a0a 100%);
   overflow: hidden;
 }
 .hero::before {
@@ -290,10 +293,11 @@ input, select, textarea { font-family: var(--font); }
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(
-    160deg,
-    rgba(10, 25, 50, 0.78) 0%,
-    rgba(15, 55, 30, 0.60) 55%,
-    rgba(160, 80, 0, 0.40) 100%
+    170deg,
+    rgba(5, 20, 5, 0.72) 0%,
+    rgba(10, 40, 10, 0.55) 40%,
+    rgba(80, 40, 0, 0.45) 75%,
+    rgba(120, 60, 0, 0.38) 100%
   );
 }
 .hero-content {

@@ -870,6 +870,13 @@ input, select, textarea { font-family: var(--font); }
     linear-gradient(150deg, #2c1b4a 0%, #6a2f8a 40%, #9b59b6 65%, #1a4080 100%);
 }
 .cities-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.cities-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.city-chittoor {
+  background:
+    linear-gradient(170deg, rgba(10,40,80,0.60) 0%, rgba(0,0,0,0.55) 100%),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80') center/cover no-repeat,
+    linear-gradient(150deg, #0a2850 0%, #1a5080 40%, #2e7db5 65%, #1a6040 100%);
+}
 .city-info {
   position: absolute;
   bottom: 0; left: 0; right: 0;

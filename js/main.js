@@ -6,21 +6,24 @@
 const cityCounts = {
   tirupathi:   0,
   renigunta:   0,
-  chandragiri: 0
+  chandragiri: 0,
+  chittoor:    0
 };
 
 function updateCityCounts() {
-  const total = cityCounts.tirupathi + cityCounts.renigunta + cityCounts.chandragiri;
+  const total = cityCounts.tirupathi + cityCounts.renigunta + cityCounts.chandragiri + cityCounts.chittoor;
   const fmt = n => n === 0 ? '0 Properties' : n + '+ Properties';
 
   const tpt  = document.getElementById('city-count-tirupathi');
   const ren  = document.getElementById('city-count-renigunta');
   const chan = document.getElementById('city-count-chandragiri');
+  const chi  = document.getElementById('city-count-chittoor');
   const tot  = document.getElementById('total-listings-count');
 
   if (tpt)  tpt.textContent  = fmt(cityCounts.tirupathi);
   if (ren)  ren.textContent  = fmt(cityCounts.renigunta);
   if (chan) chan.textContent  = fmt(cityCounts.chandragiri);
+  if (chi)  chi.textContent  = fmt(cityCounts.chittoor);
   if (tot)  tot.textContent  = total === 0 ? '0' : total + '+';
 }
 document.addEventListener('DOMContentLoaded', updateCityCounts);

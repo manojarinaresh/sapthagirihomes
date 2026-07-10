@@ -850,32 +850,36 @@ input, select, textarea { font-family: var(--font); }
 .city-mum { background: linear-gradient(135deg, #f7971e, #ffd200); }
 .city-del { background: linear-gradient(135deg, #373b44, #4286f4); }
 .city-pun { background: linear-gradient(135deg, #ee0979, #ff6a00); }
-/* Tirupathi region cities — photo + overlay + gradient fallback */
+/* Tirupathi region cities — actual place photos + gradient overlay */
 .city-tpt {
   background:
-    linear-gradient(170deg, rgba(100,45,0,0.60) 0%, rgba(0,0,0,0.55) 100%),
-    url('https://images.unsplash.com/photo-1609766418204-94aae0ecfdfc?w=800&q=80') center/cover no-repeat,
-    linear-gradient(150deg, #7c3200 0%, #c87000 45%, #e8a020 75%, #4a7020 100%);
+    linear-gradient(170deg, rgba(10,20,40,0.55) 0%, rgba(0,0,0,0.45) 100%),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Tirumala_hills_from_Tirupati.jpg/800px-Tirumala_hills_from_Tirupati.jpg') center/cover no-repeat,
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Tirumala_hills_view_from_Tirupati.jpg') center/cover no-repeat,
+    linear-gradient(150deg, #2d5a1b 0%, #4a8c2a 40%, #7c5200 75%, #3d1a00 100%);
 }
 .city-ren {
   background:
-    linear-gradient(170deg, rgba(0,60,30,0.55) 0%, rgba(0,0,0,0.55) 100%),
-    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80') center/cover no-repeat,
-    linear-gradient(150deg, #0a3d2b 0%, #1a7a4a 40%, #38a169 70%, #006994 100%);
+    linear-gradient(170deg, rgba(10,30,10,0.55) 0%, rgba(0,0,0,0.45) 100%),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Tirupati_Airport_-_Terminal_Building.jpg/800px-Tirupati_Airport_-_Terminal_Building.jpg') center/cover no-repeat,
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Tirupati_Airport_Terminal.jpg') center/cover no-repeat,
+    linear-gradient(150deg, #0a3040 0%, #1a6070 40%, #2a8090 70%, #1a4060 100%);
 }
 .city-chan {
   background:
-    linear-gradient(170deg, rgba(40,10,70,0.60) 0%, rgba(0,0,0,0.55) 100%),
-    url('https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80') center/cover no-repeat,
-    linear-gradient(150deg, #2c1b4a 0%, #6a2f8a 40%, #9b59b6 65%, #1a4080 100%);
+    linear-gradient(170deg, rgba(50,20,10,0.55) 0%, rgba(0,0,0,0.50) 100%),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Chandragiri_Fort_-_Raja_Mahal.jpg/800px-Chandragiri_Fort_-_Raja_Mahal.jpg') center/cover no-repeat,
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Chandragiri_fort.jpg') center/cover no-repeat,
+    linear-gradient(150deg, #5c2800 0%, #a05020 40%, #c07840 65%, #3d1800 100%);
 }
 .cities-grid-3 { grid-template-columns: repeat(3, 1fr); }
 .cities-grid-4 { grid-template-columns: repeat(4, 1fr); }
 .city-chittoor {
   background:
-    linear-gradient(170deg, rgba(10,40,80,0.60) 0%, rgba(0,0,0,0.55) 100%),
-    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80') center/cover no-repeat,
-    linear-gradient(150deg, #0a2850 0%, #1a5080 40%, #2e7db5 65%, #1a6040 100%);
+    linear-gradient(170deg, rgba(10,30,50,0.55) 0%, rgba(0,0,0,0.50) 100%),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Horsley_Hills_View.jpg/800px-Horsley_Hills_View.jpg') center/cover no-repeat,
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Horsley_Hills.jpg') center/cover no-repeat,
+    linear-gradient(150deg, #1a3a10 0%, #2e6a20 40%, #3a9030 65%, #1a5020 100%);
 }
 .city-info {
   position: absolute;

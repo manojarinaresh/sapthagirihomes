@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register &amp; Login — Mana-Properties</title>
+  <meta name="description" content="Create your free account on Mana-Properties to buy, sell, or rent homes in Andhra &amp; Telangana. No Brokerage. Direct Owner Listings." />
+  <meta name="keywords" content="Mana-Properties login, register property Tirupati, broker-free homes Andhra, property account" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #e05a00;
+      --orange-dark: #c24a00;
+      --blue: #1e3a5f;
+      --blue-light: #2471a3;
+    }
+
+    /* ── Auth Page Layout ── */
+    .auth-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      background: var(--bg-light, #fdf8f0);
+    }
+
+    /* Left panel – branding */
+    .auth-brand {
+      background: linear-gradient(160deg, var(--blue) 0%, #1a4a80 50%, #2d3a6e 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-brand::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .auth-brand-logo { margin-bottom: 2.5rem; position: relative; z-index: 1; }
+    .auth-brand-logo img { height: 60px; filter: brightness(0) invert(1); }
+    .auth-brand h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      position: relative; z-index: 1;
+    }
+    .auth-brand h2 span { color: #fcd34d; }
+    .auth-brand p {
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      position: relative; z-index: 1;
+    }
+    .auth-features { list-style: none; position: relative; z-index: 1; }
+    .auth-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.92rem;
+      margin-bottom: 0.75rem;
+    }
+    .auth-features li i { color: #fcd34d; width: 18px; text-align: center; }
+
+    /* Right panel – form */
+    .auth-form-panel {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2.5rem 2.75rem;
+      overflow-y: auto;
+    }
+
+    /* Tabs */
+    .auth-tabs {
+      display: flex;
+      background: #f4f6fa;
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 2rem;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 0.65rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-light, #5a6a7a);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .auth-tab.active {
+      background: #fff;
+      color: var(--blue);
+      box-shadow: 0 2px 8px rgba(30,58,95,0.12);
+    }
+
+    /* Social buttons */
+    .social-btns { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.7rem;
+      border-radius: 10px;
+      border: 1.5px solid #e0e4ea;
+      background: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .social-btn:hover { border-color: #bbb; background: #f8f8f8; transform: translateY(-1px); }
+    .social-btn img { width: 18px; height: 18px; }
+    .social-btn .fa-facebook { color: #1877f2; font-size: 1.1rem; }
+
+    /* Divider */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      color: #adb5bd;
+      font-size: 0.82rem;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ''; flex: 1; height: 1px; background: #e8ecf0;
+    }
+
+    /* Form fields */
+    .auth-field { margin-bottom: 1.1rem; }
+    .auth-field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 0.4rem;
+    }
+    .auth-input-wrap { position: relative; }
+    .auth-input-wrap i {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #adb5bd;
+      font-size: 0.9rem;
+      pointer-events: none;
+      transition: color 0.2s;
+    }
+    .auth-input-wrap input {
+      width: 100%;
+      padding: 0.78rem 1rem 0.78rem 2.6rem;
+      border: 1.5px solid #e0e4ea;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-family: var(--font);
+      color: var(--text, #1a2332);
+      background: #fdfdfd;
+      outline: none;
+      transition: all 0.25s;
+    }
+    .auth-input-wrap input:focus {
+      border-color: var(--orange);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(224,90,0,0.1);
+    }
+    .auth-input-wrap input:focus + i,
+    .auth-input-wrap:focus-within i { color: var(--orange); }
+
+    /* OTP row */
+    .otp-row { display: flex; gap: 0.5rem; }
+    .otp-row input { flex: 1; padding-left: 1rem !important; }
+    .btn-otp {
+      flex-shrink: 0;
+      padding: 0 1rem;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .btn-otp:hover { background: var(--blue-light); }
+    .btn-otp:disabled { background: #adb5bd; cursor: not-allowed; }
+
+    /* Password strength */
+    .pwd-strength { margin-top: 0.4rem; }
+    .pwd-strength-bar {
+      height: 4px;
+      border-radius: 4px;
+      background: #e0e4ea;
+      overflow: hidden;
+      margin-bottom: 0.25rem;
+    }
+    .pwd-strength-fill { height: 100%; width: 0; border-radius: 4px; transition: all 0.3s; }
+    .pwd-strength-text { font-size: 0.73rem; color: #adb5bd; }
+
+    /* Show/hide password toggle */
+    .pwd-toggle {
+      position: absolute;
+      right: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #adb5bd;
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+    .pwd-toggle:hover { color: var(--orange); }
+
+    /* Checkbox */
+    .auth-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--text-light, #5a6a7a);
+      margin-bottom: 1.25rem;
+    }
+    .auth-check input[type="checkbox"] { margin-top: 2px; accent-color: var(--orange); flex-shrink: 0; }
+    .auth-check a { color: var(--orange); text-decoration: underline; }
+
+    /* Submit button */
+    .btn-auth {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--orange), #c24a00);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 4px 14px rgba(224,90,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 48px;
+    }
+    .btn-auth:hover { background: linear-gradient(135deg, #c24a00, var(--orange)); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(224,90,0,0.4); }
+    .btn-auth:disabled { background: #adb5bd; transform: none; box-shadow: none; cursor: not-allowed; }
+    .btn-auth .spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Forgot password */
+    .auth-forgot {
+      text-align: right;
+      margin-bottom: 1.25rem;
+      margin-top: -0.5rem;
+    }
+    .auth-forgot a { font-size: 0.82rem; color: var(--blue-light); text-decoration: none; }
+    .auth-forgot a:hover { text-decoration: underline; }
+
+    /* Switch tab text */
+    .auth-switch { text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-light, #5a6a7a); }
+    .auth-switch a { color: var(--orange); font-weight: 600; text-decoration: none; cursor: pointer; }
+    .auth-switch a:hover { text-decoration: underline; }
+
+    /* Toast / Alert */
+    .auth-toast {
+      display: none;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      align-items: center;
+      gap: 0.6rem;
+      animation: fadeIn 0.3s ease;
+    }
+    .auth-toast.show { display: flex; }
+    .auth-toast.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .auth-toast.error   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .auth-toast.info    { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Form panels */
+    .auth-panel { display: none; }
+    .auth-panel.active { display: block; }
+
+    /* Phone OTP verification step */
+    .otp-verify-step { display: none; }
+    .otp-verify-step.show { display: block; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .auth-page { grid-template-columns: 1fr; }
+      .auth-brand { display: none; }
+      .auth-form-panel { padding: 2rem 1.5rem; min-height: 100vh; justify-content: flex-start; padding-top: 3rem; }
+    }
+    @media (max-width: 480px) {
+      .auth-form-panel { padding: 1.5rem 1.25rem; }
+      .social-btns { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fa fa-phone"></i> +91 90081 76314</span>
+        <span><i class="fa fa-envelope"></i> support@mana-properties.com</span>
+      </div>
+      <div class="topbar-center">
+        <i class="fa fa-gopuram"></i>
+        <span>No Brokerage. Direct Owner Listings.</span>
+        <i class="fa fa-gopuram"></i>
+      </div>
+      <div class="topbar-right">
+        <a href="post-property.html"><i class="fa fa-plus-circle"></i> Post FREE Property</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AUTH PAGE ===== -->
+  <div class="auth-page">
+
+    <!-- ── LEFT: Brand panel ── -->
+    <div class="auth-brand">
+      <div class="auth-brand-logo">
+        <a href="index.html"><img src="images/logo.svg" alt="Mana-Properties – No Brokerage, Just Homes" /></a>
+      </div>
+      <h2>Your <span>Dream Home</span><br/>Awaits You</h2>
+      <p>Join thousands of property owners and buyers in Tirupathi, Chittoor, Kadapa &amp; beyond. 100% broker-free. Direct connections.</p>
+      <ul class="auth-features">
+        <li><i class="fa fa-check-circle"></i> Post properties for FREE — no hidden charges</li>
+        <li><i class="fa fa-check-circle"></i> Connect directly with verified buyers &amp; tenants</li>
+        <li><i class="fa fa-check-circle"></i> Save &amp; track your favourite listings</li>
+        <li><i class="fa fa-check-circle"></i> Get notified for new properties in your area</li>
+        <li><i class="fa fa-check-circle"></i> Secure login — your data is always protected</li>
+      </ul>
+    </div>
+
+    <!-- ── RIGHT: Form panel ── -->
+    <div class="auth-form-panel">
+
+      <!-- Mobile logo -->
+      <div style="text-align:center; margin-bottom:1.75rem; display:none;" id="mobileLogo">
+        <a href="index.html"><img src="images/logo.svg" alt="Mana-Properties" style="height:50px;" /></a>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs" role="tablist">
+        <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')" role="tab" aria-selected="true">Login</button>
+        <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')" role="tab" aria-selected="false">Register Free</button>
+      </div>
+
+      <!-- Toast -->
+      <div class="auth-toast" id="authToast" role="alert"></div>
+
+      <!-- ══ LOGIN PANEL ══ -->
+      <div class="auth-panel active" id="loginPanel">
+        <div class="social-btns">
+          <button class="social-btn" onclick="loginWithGoogle()" aria-label="Login with Google">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google login button" />
+            Continue with Google
+          </button>
+          <button class="social-btn" onclick="loginWithFacebook()" aria-label="Login with Facebook">
+            <i class="fab fa-facebook fa-facebook"></i>
+            Facebook
+          </button>
+        </div>
+
+        <div class="auth-divider">or login with email</div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)" novalidate>
+          <div class="auth-field">
+            <label for="loginEmail">Email Address</label>
+            <div class="auth-input-wrap">
+              <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+              <i class="fa fa-envelope"></i>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="loginPassword">Password</label>
+            <div class="auth-input-wrap">
+              <input type="password" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password" />
+              <i class="fa fa-lock"></i>
+              <button type="button" class="pwd-toggle" onclick="togglePwd('loginPassword', this)" aria-label="Show password">
+                <i class="fa fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-forgot"><a href="#" onclick="handleForgotPassword(event)">Forgot Password?</a></div>
+
+          <button type="submit" class="btn-auth" id="loginBtn">
+            <span class="spinner" id="loginSpinner"></span>
+            <i class="fa fa-sign-in-alt" id="loginIcon"></i>
+            <span id="loginBtnText">Login to Mana-Properties</span>
+          </button>
+        </form>
+
+        <div class="auth-switch">Don't have an account? <a onclick="switchAuthTab('register')">Register Free</a></div>
+      </div>
+
+      <!-- ══ REGISTER PANEL ══ -->
+      <div class="auth-panel" id="registerPanel">
+        <div class="social-btns">
+          <button class="social-btn" onclick="loginWithGoogle()" aria-label="Register with Google">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google login button" />
+            Continue with Google
+          </button>
+          <button class="social-btn" onclick="loginWithFacebook()" aria-label="Register with Facebook">
+            <i class="fab fa-facebook fa-facebook"></i>
+            Facebook
+          </button>
+        </div>
+
+        <div class="auth-divider">or create with email</div>
+
+        <form id="registerForm" onsubmit="handleRegister(event)" novalidate>
+          <div class="auth-field">
+            <label for="regName">Full Name</label>
+            <div class="auth-input-wrap">
+              <input type="text" id="regName" placeholder="Your full name" required autocomplete="name" />
+              <i class="fa fa-user"></i>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="regEmail">Email Address</label>
+            <div class="auth-input-wrap">
+              <input type="email" id="regEmail" placeholder="you@example.com" required autocomplete="email" />
+              <i class="fa fa-envelope"></i>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="regPhone">Mobile Number</label>
+            <div class="otp-row">
+              <div class="auth-input-wrap" style="flex:1; position:relative;">
+                <input type="tel" id="regPhone" placeholder="+91 XXXXX XXXXX" required autocomplete="tel"
+                       style="padding-left:2.6rem;" />
+                <i class="fa fa-mobile-alt" style="position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:#adb5bd;pointer-events:none;"></i>
+              </div>
+              <button type="button" class="btn-otp" id="sendOtpBtn" onclick="sendOTP()">Send OTP</button>
+            </div>
+          </div>
+
+          <!-- OTP verify step (shown after OTP sent) -->
+          <div class="auth-field otp-verify-step" id="otpVerifyStep">
+            <label for="otpInput">Enter OTP</label>
+            <div class="otp-row">
+              <div class="auth-input-wrap" style="flex:1; position:relative;">
+                <input type="text" id="otpInput" placeholder="6-digit OTP" maxlength="6" inputmode="numeric"
+                       style="padding-left:2.6rem;" />
+                <i class="fa fa-key" style="position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:#adb5bd;pointer-events:none;"></i>
+              </div>
+              <button type="button" class="btn-otp" onclick="verifyOTP()">Verify</button>
+            </div>
+            <p style="font-size:0.75rem;color:#27ae60;margin-top:0.3rem;" id="otpStatusText"></p>
+          </div>
+
+          <div class="auth-field">
+            <label for="regPassword">Password</label>
+            <div class="auth-input-wrap">
+              <input type="password" id="regPassword" placeholder="Min. 8 characters" required
+                     autocomplete="new-password" oninput="checkPasswordStrength(this.value)" />
+              <i class="fa fa-lock"></i>
+              <button type="button" class="pwd-toggle" onclick="togglePwd('regPassword', this)" aria-label="Show password">
+                <i class="fa fa-eye"></i>
+              </button>
+            </div>
+            <div class="pwd-strength">
+              <div class="pwd-strength-bar"><div class="pwd-strength-fill" id="pwdStrengthFill"></div></div>
+              <div class="pwd-strength-text" id="pwdStrengthText"></div>
+            </div>
+          </div>
+
+          <div class="auth-check">
+            <input type="checkbox" id="agreeTerms" required />
+            <label for="agreeTerms">I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a> of Mana-Properties.</label>
+          </div>
+
+          <!-- reCAPTCHA container for phone auth -->
+          <div id="recaptcha-container"></div>
+
+          <button type="submit" class="btn-auth" id="registerBtn">
+            <span class="spinner" id="registerSpinner"></span>
+            <i class="fa fa-user-plus" id="registerIcon"></i>
+            <span id="registerBtnText">Create Account Free</span>
+          </button>
+        </form>
+
+        <div class="auth-switch">Already have an account? <a onclick="switchAuthTab('login')">Login here</a></div>
+      </div>
+
+    </div><!-- /auth-form-panel -->
+  </div><!-- /auth-page -->
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import {
+      auth, db, googleProvider, facebookProvider,
+      createUserWithEmailAndPassword, signInWithEmailAndPassword,
+      signInWithPopup, sendPasswordResetEmail, updateProfile,
+      onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber,
+      doc, setDoc, serverTimestamp
+    } from './js/firebase-config.js';
+
+    /* ── Redirect if already logged in ── */
+    onAuthStateChanged(auth, user => {
+      if (user) window.location.href = 'dashboard.html';
+    });
+
+    /* ── Show mobile logo on small screens ── */
+    if (window.innerWidth <= 900) document.getElementById('mobileLogo').style.display = 'block';
+
+    /* ── Tab switching ── */
+    window.switchAuthTab = function(tab) {
+      document.getElementById('loginPanel').classList.toggle('active',    tab === 'login');
+      document.getElementById('registerPanel').classList.toggle('active', tab === 'register');
+      document.getElementById('tabLogin').classList.toggle('active',    tab === 'login');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+      hideToast();
+    };
+
+    /* ── Toast helper ── */
+    function showToast(msg, type = 'info') {
+      const t = document.getElementById('authToast');
+      t.innerHTML = `<i class="fa fa-${type==='success'?'check-circle':type==='error'?'exclamation-circle':'info-circle'}"></i> ${msg}`;
+      t.className = `auth-toast show ${type}`;
+    }
+    function hideToast() {
+      document.getElementById('authToast').className = 'auth-toast';
+    }
+
+    /* ── Loading state ── */
+    function setLoading(btnId, spinnerId, iconId, textId, loading) {
+      const btn = document.getElementById(btnId);
+      btn.disabled = loading;
+      document.getElementById(spinnerId).style.display = loading ? 'block' : 'none';
+      document.getElementById(iconId).style.display    = loading ? 'none'  : 'inline';
+      document.getElementById(textId).textContent = loading
+        ? (btnId === 'loginBtn' ? 'Logging in…' : 'Creating account…')
+        : (btnId === 'loginBtn' ? 'Login to Mana-Properties' : 'Create Account Free');
+    }
+
+    /* ── Save user profile to Firestore ── */
+    async function saveUserProfile(user, extraData = {}) {
+      await setDoc(doc(db, 'users', user.uid), {
+        uid:         user.uid,
+        name:        user.displayName || extraData.name || '',
+        email:       user.email || '',
+        phone:       user.phoneNumber || extraData.phone || '',
+        photoURL:    user.photoURL || '',
+        createdAt:   serverTimestamp(),
+        lastLogin:   serverTimestamp(),
+        role:        'user',
+        savedProperties: [],
+        postedProperties: []
+      }, { merge: true });
+    }
+
+    /* ── Google Login / Register ── */
+    window.loginWithGoogle = async function() {
+      try {
+        const result = await signInWithPopup(auth, googleProvider);
+        await saveUserProfile(result.user);
+        showToast('Welcome! Redirecting to your dashboard…', 'success');
+        setTimeout(() => window.location.href = 'dashboard.html', 1200);
+      } catch (err) {
+        showToast(friendlyError(err.code), 'error');
+      }
+    };
+
+    /* ── Facebook Login ── */
+    window.loginWithFacebook = async function() {
+      try {
+        const result = await signInWithPopup(auth, facebookProvider);
+        await saveUserProfile(result.user);
+        showToast('Welcome! Redirecting…', 'success');
+        setTimeout(() => window.location.href = 'dashboard.html', 1200);
+      } catch (err) {
+        showToast(friendlyError(err.code), 'error');
+      }
+    };
+
+    /* ── Email Login ── */
+    window.handleLogin = async function(e) {
+      e.preventDefault();
+      const email    = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      if (!email || !password) { showToast('Please fill in all fields.', 'error'); return; }
+      setLoading('loginBtn','loginSpinner','loginIcon','loginBtnText', true);
+      try {
+        const result = await signInWithEmailAndPassword(auth, email, password);
+        await saveUserProfile(result.user);
+        showToast('Login successful! Welcome back.', 'success');
+        setTimeout(() => window.location.href = 'dashboard.html', 1000);
+      } catch (err) {
+        showToast(friendlyError(err.code), 'error');
+        setLoading('loginBtn','loginSpinner','loginIcon','loginBtnText', false);
+      }
+    };
+
+    /* ── Forgot Password ── */
+    window.handleForgotPassword = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      if (!email) { showToast('Enter your email above first.', 'info'); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showToast('Password reset email sent! Check your inbox.', 'success');
+      } catch (err) {
+        showToast(friendlyError(err.code), 'error');
+      }
+    };
+
+    /* ── Email Registration ── */
+    window.handleRegister = async function(e) {
+      e.preventDefault();
+      const name     = document.getElementById('regName').value.trim();
+      const email    = document.getElementById('regEmail').value.trim();
+      const phone    = document.getElementById('regPhone').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const agreed   = document.getElementById('agreeTerms').checked;
+
+      if (!name || !email || !password) { showToast('Please fill in all required fields.', 'error'); return; }
+      if (password.length < 8) { showToast('Password must be at least 8 characters.', 'error'); return; }
+      if (!agreed) { showToast('Please accept the Terms of Service to continue.', 'error'); return; }
+
+      setLoading('registerBtn','registerSpinner','registerIcon','registerBtnText', true);
+      try {
+        const result = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(result.user, { displayName: name });
+        await saveUserProfile(result.user, { name, phone });
+        showToast('🎉 Welcome to Mana-Properties! Start posting your property now.', 'success');
+        setTimeout(() => window.location.href = 'dashboard.html', 1500);
+      } catch (err) {
+        showToast(friendlyError(err.code), 'error');
+        setLoading('registerBtn','registerSpinner','registerIcon','registerBtnText', false);
+      }
+    };
+
+    /* ── Phone OTP ── */
+    let confirmationResult = null;
+    window.sendOTP = async function() {
+      const phone = document.getElementById('regPhone').value.trim();
+      if (!phone) { showToast('Enter your mobile number first.', 'error'); return; }
+      try {
+        document.getElementById('sendOtpBtn').disabled = true;
+        document.getElementById('sendOtpBtn').textContent = 'Sending…';
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { size: 'invisible' });
+        confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
+        document.getElementById('otpVerifyStep').classList.add('show');
+        document.getElementById('otpStatusText').textContent = 'OTP sent to ' + phone;
+        document.getElementById('sendOtpBtn').textContent = 'Resend';
+        document.getElementById('sendOtpBtn').disabled = false;
+        showToast('OTP sent! Check your SMS.', 'success');
+      } catch (err) {
+        showToast(friendlyError(err.code), 'error');
+        document.getElementById('sendOtpBtn').disabled = false;
+        document.getElementById('sendOtpBtn').textContent = 'Send OTP';
+      }
+    };
+
+    window.verifyOTP = async function() {
+      const code = document.getElementById('otpInput').value.trim();
+      if (!code) { showToast('Enter the OTP code.', 'error'); return; }
+      try {
+        await confirmationResult.confirm(code);
+        document.getElementById('otpStatusText').textContent = '✓ Phone verified!';
+        document.getElementById('otpStatusText').style.color = '#27ae60';
+        showToast('Phone number verified successfully!', 'success');
+      } catch (err) {
+        showToast('Invalid OTP. Please try again.', 'error');
+      }
+    };
+
+    /* ── Password strength ── */
+    window.checkPasswordStrength = function(val) {
+      const fill = document.getElementById('pwdStrengthFill');
+      const text = document.getElementById('pwdStrengthText');
+      let score = 0;
+      if (val.length >= 8) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+      const levels = [
+        { w:'0%',   color:'#e0e4ea', label:'' },
+        { w:'25%',  color:'#e74c3c', label:'Weak' },
+        { w:'50%',  color:'#f39c12', label:'Fair' },
+        { w:'75%',  color:'#3498db', label:'Good' },
+        { w:'100%', color:'#27ae60', label:'Strong' }
+      ];
+      fill.style.width       = levels[score].w;
+      fill.style.background  = levels[score].color;
+      text.textContent       = levels[score].label;
+      text.style.color       = levels[score].color;
+    };
+
+    /* ── Show/hide password ── */
+    window.togglePwd = function(inputId, btn) {
+      const inp = document.getElementById(inputId);
+      const isHidden = inp.type === 'password';
+      inp.type = isHidden ? 'text' : 'password';
+      btn.querySelector('i').className = isHidden ? 'fa fa-eye-slash' : 'fa fa-eye';
+    };
+
+    /* ── Friendly error messages ── */
+    function friendlyError(code) {
+      const map = {
+        'auth/email-already-in-use':    'This email is already registered. Try logging in.',
+        'auth/invalid-email':           'Please enter a valid email address.',
+        'auth/weak-password':           'Password is too weak. Use 8+ characters.',
+        'auth/user-not-found':          'No account found with this email.',
+        'auth/wrong-password':          'Incorrect password. Try again or reset it.',
+        'auth/too-many-requests':       'Too many attempts. Please try again later.',
+        'auth/popup-closed-by-user':    'Login cancelled. Please try again.',
+        'auth/network-request-failed':  'Network error. Check your connection.',
+        'auth/invalid-phone-number':    'Enter a valid phone number with country code (+91).',
+        'auth/invalid-verification-code': 'Invalid OTP. Please enter the correct code.',
+      };
+      return map[code] || 'Something went wrong. Please try again.';
+    }
+  </script>
+</body>
+</html>

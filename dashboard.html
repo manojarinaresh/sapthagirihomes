@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard — Mana-Properties</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --orange:#e05a00; --orange-dark:#c24a00; --blue:#1e3a5f; --blue-light:#2471a3; }
+
+    /* ── Layout ── */
+    .dash-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: calc(100vh - 52px);
+      background: #f4f6fa;
+    }
+
+    /* ── Sidebar ── */
+    .dash-sidebar {
+      background: var(--blue);
+      padding: 2rem 0;
+      position: sticky;
+      top: 52px;
+      height: calc(100vh - 52px);
+      overflow-y: auto;
+    }
+    .dash-user {
+      padding: 0 1.5rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 1rem;
+    }
+    .dash-avatar {
+      width: 60px; height: 60px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 800; color: #fff;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    .dash-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .dash-user-name { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .dash-user-email { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 0.1rem; }
+
+    .dash-nav { list-style: none; padding: 0; }
+    .dash-nav li a, .dash-nav li button {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1.5rem;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: all 0.2s;
+    }
+    .dash-nav li a:hover, .dash-nav li button:hover,
+    .dash-nav li.active a { background: rgba(255,255,255,0.1); color: #fff; }
+    .dash-nav li.active a { border-left: 3px solid var(--orange); }
+    .dash-nav li a i, .dash-nav li button i { width: 18px; text-align: center; color: var(--orange); }
+    .dash-nav .nav-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0.5rem 1.5rem; }
+
+    /* ── Main content ── */
+    .dash-main { padding: 2rem; min-width: 0; }
+    .dash-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .dash-header h1 { font-size: 1.4rem; font-weight: 800; color: var(--blue); }
+    .dash-header p  { font-size: 0.88rem; color: #6a7a8a; margin-top: 0.2rem; }
+
+    /* ── Stat cards ── */
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .dash-stat-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 12px rgba(30,58,95,0.07);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .dash-stat-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .dash-stat-card h3 { font-size: 1.6rem; font-weight: 800; color: var(--blue); line-height: 1; }
+    .dash-stat-card p  { font-size: 0.78rem; color: #6a7a8a; margin-top: 0.2rem; }
+
+    /* ── Upload section ── */
+    .upload-section {
+      background: linear-gradient(135deg, var(--blue), #1a5298);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+    .upload-section h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .upload-section p  { font-size: 0.88rem; opacity: 0.8; margin-bottom: 1.25rem; }
+    .upload-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn-upload {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-upload-sell   { background: var(--orange); color: #fff; }
+    .btn-upload-sell:hover { background: var(--orange-dark); color: #fff; transform: translateY(-2px); }
+    .btn-upload-rent   { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-upload-rent:hover { background: rgba(255,255,255,0.25); color: #fff; }
+
+    /* ── Section ── */
+    .dash-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(30,58,95,0.07);
+      margin-bottom: 1.5rem;
+    }
+    .dash-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .dash-section-header h3 { font-size: 1rem; font-weight: 700; color: var(--blue); }
+    .dash-section-header a  { font-size: 0.82rem; color: var(--orange); text-decoration: none; font-weight: 600; }
+
+    /* ── Property item ── */
+    .prop-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #f0f4f8;
+    }
+    .prop-item:last-child { border-bottom: none; }
+    .prop-thumb {
+      width: 64px; height: 52px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1e3a5f, #2471a3);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 1.2rem;
+    }
+    .prop-info { flex: 1; min-width: 0; }
+    .prop-info h4 { font-size: 0.88rem; font-weight: 600; color: var(--blue); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .prop-info p  { font-size: 0.75rem; color: #6a7a8a; margin-top: 0.15rem; }
+    .prop-badge {
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .badge-sell  { background: #fff3ea; color: var(--orange); }
+    .badge-rent  { background: #e8f4ff; color: var(--blue); }
+    .badge-saved { background: #f0fff4; color: #27ae60; }
+
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: #adb5bd;
+    }
+    .empty-state i    { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+    .empty-state h4   { font-size: 0.95rem; font-weight: 600; color: #6a7a8a; margin-bottom: 0.4rem; }
+    .empty-state p    { font-size: 0.82rem; }
+    .empty-state a    { color: var(--orange); font-weight: 600; text-decoration: none; }
+
+    /* ── Profile card ── */
+    .profile-card { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .profile-avatar-lg {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 800; color: #fff;
+      flex-shrink: 0; overflow: hidden;
+      position: relative;
+    }
+    .profile-avatar-lg img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-avatar-lg .avatar-edit {
+      position: absolute; bottom: 0; right: 0;
+      width: 24px; height: 24px;
+      background: var(--blue); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: #fff; cursor: pointer;
+    }
+    .profile-info h3 { font-size: 1.1rem; font-weight: 700; color: var(--blue); }
+    .profile-info p  { font-size: 0.85rem; color: #6a7a8a; margin-top: 0.2rem; }
+    .profile-edit-btn {
+      margin-left: auto;
+      padding: 0.5rem 1.1rem;
+      border: 1.5px solid var(--blue);
+      border-radius: 8px;
+      color: var(--blue);
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .profile-edit-btn:hover { background: var(--blue); color: #fff; }
+
+    /* ── Mobile hamburger ── */
+    .dash-mobile-toggle {
+      display: none;
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 48px; height: 48px;
+      background: var(--blue);
+      border-radius: 50%;
+      color: #fff;
+      border: none;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(30,58,95,0.3);
+      z-index: 200;
+      cursor: pointer;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 992px) {
+      .dash-layout { grid-template-columns: 1fr; }
+      .dash-sidebar {
+        position: fixed; top: 52px; left: 0;
+        width: 260px; height: calc(100vh - 52px);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 100;
+      }
+      .dash-sidebar.open { transform: translateX(0); }
+      .dash-mobile-toggle { display: flex; align-items: center; justify-content: center; }
+      .dash-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .dash-stats { grid-template-columns: 1fr 1fr; }
+      .dash-main  { padding: 1.25rem; }
+      .upload-btns { flex-direction: column; }
+      .btn-upload { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <a href="index.html" class="logo"><img src="images/logo.svg" alt="Mana-Properties" class="logo-img" /></a>
+      </div>
+      <div class="topbar-center">
+        <i class="fa fa-gopuram"></i>
+        <span>No Brokerage. Direct Owner Listings.</span>
+        <i class="fa fa-gopuram"></i>
+      </div>
+      <div class="topbar-right">
+        <span id="topbarUserName" style="color:rgba(255,255,255,0.88);font-size:0.82rem;display:flex;align-items:center;gap:0.4rem;">
+          <i class="fa fa-user-circle" style="color:var(--accent);"></i> <span id="userNameDisplay">Loading…</span>
+        </span>
+        <a href="#" onclick="handleLogout(event)" style="color:rgba(255,255,255,0.88);font-size:0.82rem;display:flex;align-items:center;gap:0.4rem;">
+          <i class="fa fa-sign-out-alt" style="color:var(--accent);"></i> Logout
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DASHBOARD LAYOUT ===== -->
+  <div class="dash-layout">
+
+    <!-- ── Sidebar ── -->
+    <aside class="dash-sidebar" id="dashSidebar">
+      <div class="dash-user">
+        <div class="dash-avatar" id="sidebarAvatar">?</div>
+        <div class="dash-user-name"  id="sidebarName">Loading…</div>
+        <div class="dash-user-email" id="sidebarEmail"></div>
+      </div>
+      <ul class="dash-nav">
+        <li class="active"><a href="#" onclick="showSection('overview',this)"><i class="fa fa-th-large"></i> Overview</a></li>
+        <li><a href="#" onclick="showSection('post',this)"><i class="fa fa-plus-circle"></i> Post Property</a></li>
+        <li><a href="#" onclick="showSection('myprops',this)"><i class="fa fa-building"></i> My Properties</a></li>
+        <li><a href="#" onclick="showSection('saved',this)"><i class="fa fa-heart"></i> Saved Listings</a></li>
+        <li><a href="#" onclick="showSection('profile',this)"><i class="fa fa-user-cog"></i> My Profile</a></li>
+        <div class="nav-divider"></div>
+        <li><a href="properties.html"><i class="fa fa-search"></i> Browse Properties</a></li>
+        <li><a href="contact.html"><i class="fa fa-headset"></i> Support</a></li>
+        <div class="nav-divider"></div>
+        <li><button onclick="handleLogout(event)"><i class="fa fa-sign-out-alt"></i> Logout</button></li>
+      </ul>
+    </aside>
+
+    <!-- ── Main ── -->
+    <main class="dash-main">
+
+      <!-- ═══ OVERVIEW ═══ -->
+      <div id="sec-overview" class="dash-content-section">
+        <div class="dash-header">
+          <div>
+            <h1>Welcome back, <span id="welcomeName">there</span>! 👋</h1>
+            <p>Here's what's happening with your properties.</p>
+          </div>
+          <a href="#" onclick="showSection('post')" class="btn-upload btn-upload-sell" style="text-decoration:none;">
+            <i class="fa fa-plus"></i> Post New Property
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="dash-stats">
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon" style="background:#fff3ea;"><i class="fa fa-building" style="color:var(--orange);"></i></div>
+            <div><h3 id="statPosted">0</h3><p>Properties Listed</p></div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon" style="background:#e8f4ff;"><i class="fa fa-heart" style="color:#2471a3;"></i></div>
+            <div><h3 id="statSaved">0</h3><p>Saved Properties</p></div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon" style="background:#f0fff4;"><i class="fa fa-eye" style="color:#27ae60;"></i></div>
+            <div><h3 id="statViews">0</h3><p>Total Views</p></div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon" style="background:#fff0f0;"><i class="fa fa-phone" style="color:#e74c3c;"></i></div>
+            <div><h3 id="statEnquiries">0</h3><p>Enquiries</p></div>
+          </div>
+        </div>
+
+        <!-- Upload CTA -->
+        <div class="upload-section">
+          <h2><i class="fa fa-upload"></i> List Your Property Today</h2>
+          <p>Reach thousands of verified buyers and tenants — 100% free, zero brokerage.</p>
+          <div class="upload-btns">
+            <a href="post-property.html?type=sell" class="btn-upload btn-upload-sell">
+              <i class="fa fa-rupee-sign"></i> Sell My Property
+            </a>
+            <a href="post-property.html?type=rent" class="btn-upload btn-upload-rent">
+              <i class="fa fa-key"></i> Rent Out My Property
+            </a>
+            <a href="post-property.html?type=buy" class="btn-upload btn-upload-rent">
+              <i class="fa fa-search"></i> Looking to Buy
+            </a>
+          </div>
+        </div>
+
+        <!-- My Posted -->
+        <div class="dash-section">
+          <div class="dash-section-header">
+            <h3><i class="fa fa-building" style="color:var(--orange);margin-right:0.5rem;"></i>My Posted Properties</h3>
+            <a href="#" onclick="showSection('myprops')">View All</a>
+          </div>
+          <div id="overviewPostedList">
+            <div class="empty-state">
+              <i class="fa fa-home"></i>
+              <h4>No properties listed yet</h4>
+              <p>Start by <a href="#" onclick="showSection('post')">posting your first property</a> — it's free!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saved -->
+        <div class="dash-section">
+          <div class="dash-section-header">
+            <h3><i class="fa fa-heart" style="color:#e74c3c;margin-right:0.5rem;"></i>Saved Listings</h3>
+            <a href="#" onclick="showSection('saved')">View All</a>
+          </div>
+          <div id="overviewSavedList">
+            <div class="empty-state">
+              <i class="fa fa-heart"></i>
+              <h4>No saved properties</h4>
+              <p><a href="properties.html">Browse properties</a> and tap the heart icon to save them here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ POST PROPERTY ═══ -->
+      <div id="sec-post" class="dash-content-section" style="display:none;">
+        <div class="dash-header">
+          <div><h1>Post a Property</h1><p>Choose what you want to do</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
+          <a href="post-property.html?type=sell" style="text-decoration:none;">
+            <div class="dash-section" style="text-align:center;cursor:pointer;transition:transform 0.2s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='transparent';this.style.transform='translateY(0)'">
+              <i class="fa fa-rupee-sign" style="font-size:2rem;color:var(--orange);margin-bottom:0.75rem;display:block;"></i>
+              <h3 style="color:var(--blue);margin-bottom:0.4rem;">Sell Property</h3>
+              <p style="font-size:0.85rem;color:#6a7a8a;">List your property for sale. Reach verified buyers directly.</p>
+            </div>
+          </a>
+          <a href="post-property.html?type=rent" style="text-decoration:none;">
+            <div class="dash-section" style="text-align:center;cursor:pointer;transition:transform 0.2s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--blue-light)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='transparent';this.style.transform='translateY(0)'">
+              <i class="fa fa-key" style="font-size:2rem;color:var(--blue-light);margin-bottom:0.75rem;display:block;"></i>
+              <h3 style="color:var(--blue);margin-bottom:0.4rem;">Rent Out</h3>
+              <p style="font-size:0.85rem;color:#6a7a8a;">Find reliable tenants for your property. Fast &amp; free.</p>
+            </div>
+          </a>
+          <a href="post-property.html?type=buy" style="text-decoration:none;">
+            <div class="dash-section" style="text-align:center;cursor:pointer;transition:transform 0.2s;border:2px solid transparent;" onmouseover="this.style.borderColor='#27ae60';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='transparent';this.style.transform='translateY(0)'">
+              <i class="fa fa-search" style="font-size:2rem;color:#27ae60;margin-bottom:0.75rem;display:block;"></i>
+              <h3 style="color:var(--blue);margin-bottom:0.4rem;">Post Requirement</h3>
+              <p style="font-size:0.85rem;color:#6a7a8a;">Tell sellers what you're looking for. Get matched faster.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ═══ MY PROPERTIES ═══ -->
+      <div id="sec-myprops" class="dash-content-section" style="display:none;">
+        <div class="dash-header">
+          <div><h1>My Properties</h1><p>Manage your listed properties</p></div>
+          <a href="post-property.html" class="btn-upload btn-upload-sell" style="text-decoration:none;"><i class="fa fa-plus"></i> Add New</a>
+        </div>
+        <div class="dash-section">
+          <div id="myPropertiesList">
+            <div class="empty-state">
+              <i class="fa fa-home"></i>
+              <h4>No properties listed yet</h4>
+              <p><a href="post-property.html">Post your first property</a> — completely free!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SAVED ═══ -->
+      <div id="sec-saved" class="dash-content-section" style="display:none;">
+        <div class="dash-header">
+          <div><h1>Saved Listings</h1><p>Properties you've bookmarked</p></div>
+        </div>
+        <div class="dash-section">
+          <div id="savedPropertiesList">
+            <div class="empty-state">
+              <i class="fa fa-heart"></i>
+              <h4>No saved properties</h4>
+              <p><a href="properties.html">Browse properties</a> and tap the ♥ icon to save them here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PROFILE ═══ -->
+      <div id="sec-profile" class="dash-content-section" style="display:none;">
+        <div class="dash-header">
+          <div><h1>My Profile</h1><p>Manage your account details</p></div>
+        </div>
+        <div class="dash-section">
+          <div class="profile-card" style="margin-bottom:1.5rem;">
+            <div class="profile-avatar-lg" id="profileAvatarLg">?
+              <div class="avatar-edit"><i class="fa fa-camera"></i></div>
+            </div>
+            <div class="profile-info">
+              <h3 id="profileName">Loading…</h3>
+              <p id="profileEmail"></p>
+              <p id="profilePhone" style="margin-top:0.2rem;"></p>
+            </div>
+            <button class="profile-edit-btn" onclick="toggleProfileEdit()"><i class="fa fa-edit"></i> Edit Profile</button>
+          </div>
+
+          <form id="profileForm" style="display:none;" onsubmit="saveProfile(event)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+              <div>
+                <label style="font-size:0.85rem;font-weight:600;color:var(--blue);display:block;margin-bottom:0.3rem;">Full Name</label>
+                <input type="text" id="editName" style="width:100%;padding:0.65rem 0.9rem;border:1.5px solid #e0e4ea;border-radius:8px;font-family:var(--font);outline:none;font-size:0.9rem;" />
+              </div>
+              <div>
+                <label style="font-size:0.85rem;font-weight:600;color:var(--blue);display:block;margin-bottom:0.3rem;">Phone Number</label>
+                <input type="tel" id="editPhone" style="width:100%;padding:0.65rem 0.9rem;border:1.5px solid #e0e4ea;border-radius:8px;font-family:var(--font);outline:none;font-size:0.9rem;" />
+              </div>
+            </div>
+            <button type="submit" style="padding:0.65rem 1.5rem;background:var(--orange);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem;">
+              <i class="fa fa-save"></i> Save Changes
+            </button>
+            <button type="button" onclick="toggleProfileEdit()" style="padding:0.65rem 1.5rem;background:#f4f6fa;color:#333;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;margin-left:0.5rem;">
+              Cancel
+            </button>
+          </form>
+
+          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #f0f4f8;">
+            <h4 style="font-size:0.9rem;font-weight:700;color:var(--blue);margin-bottom:1rem;">Account Security</h4>
+            <button onclick="sendPasswordReset()" style="padding:0.6rem 1.2rem;border:1.5px solid #e0e4ea;border-radius:8px;background:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;color:#333;">
+              <i class="fa fa-key" style="color:var(--orange);"></i> Reset Password
+            </button>
+          </div>
+
+          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #f0f4f8;">
+            <button onclick="handleLogout(event)" style="padding:0.65rem 1.4rem;background:#fff0f0;color:#e74c3c;border:1.5px solid #fcd4d4;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.88rem;">
+              <i class="fa fa-sign-out-alt"></i> Logout
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Mobile sidebar toggle -->
+  <button class="dash-mobile-toggle" onclick="toggleDashSidebar()" aria-label="Toggle menu">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <!-- Firebase -->
+  <script type="module">
+    import {
+      auth, db,
+      signOut, onAuthStateChanged, sendPasswordResetEmail,
+      updateProfile,
+      doc, setDoc, getDoc, serverTimestamp
+    } from './js/firebase-config.js';
+
+    /* ── Auth guard ── */
+    onAuthStateChanged(auth, async user => {
+      if (!user) { window.location.href = 'auth.html'; return; }
+      populateUI(user);
+      await loadUserData(user);
+    });
+
+    async function loadUserData(user) {
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        if (snap.exists()) {
+          const data = snap.data();
+          document.getElementById('profilePhone').textContent = data.phone ? '📱 ' + data.phone : '';
+          document.getElementById('statSaved').textContent  = (data.savedProperties   || []).length;
+          document.getElementById('statPosted').textContent = (data.postedProperties  || []).length;
+          document.getElementById('editName').value  = data.name  || user.displayName || '';
+          document.getElementById('editPhone').value = data.phone || '';
+        }
+      } catch (e) { /* Firestore not configured yet */ }
+    }
+
+    function populateUI(user) {
+      const name  = user.displayName || user.email.split('@')[0];
+      const email = user.email;
+      const initial = name.charAt(0).toUpperCase();
+
+      // Topbar
+      document.getElementById('userNameDisplay').textContent = name;
+
+      // Sidebar
+      document.getElementById('sidebarName').textContent  = name;
+      document.getElementById('sidebarEmail').textContent = email;
+      document.getElementById('sidebarAvatar').textContent = initial;
+      if (user.photoURL) {
+        document.getElementById('sidebarAvatar').innerHTML = `<img src="${user.photoURL}" alt="${name}">`;
+      }
+
+      // Welcome
+      document.getElementById('welcomeName').textContent = name.split(' ')[0];
+
+      // Profile
+      document.getElementById('profileName').textContent  = name;
+      document.getElementById('profileEmail').textContent = '✉ ' + email;
+      document.getElementById('profileAvatarLg').textContent = initial;
+      if (user.photoURL) {
+        document.getElementById('profileAvatarLg').innerHTML = `<img src="${user.photoURL}" alt="${name}"><div class="avatar-edit"><i class="fa fa-camera"></i></div>`;
+      }
+    }
+
+    /* ── Logout ── */
+    window.handleLogout = async function(e) {
+      e && e.preventDefault();
+      await signOut(auth);
+      window.location.href = 'index.html';
+    };
+
+    /* ── Save profile ── */
+    window.saveProfile = async function(e) {
+      e.preventDefault();
+      const user  = auth.currentUser;
+      const name  = document.getElementById('editName').value.trim();
+      const phone = document.getElementById('editPhone').value.trim();
+      try {
+        await updateProfile(user, { displayName: name });
+        await setDoc(doc(db, 'users', user.uid), { name, phone, lastLogin: serverTimestamp() }, { merge: true });
+        populateUI(auth.currentUser);
+        toggleProfileEdit();
+        showDashToast('Profile updated successfully!', 'success');
+      } catch (e) {
+        showDashToast('Could not save profile. Check Firebase setup.', 'error');
+      }
+    };
+
+    /* ── Reset password ── */
+    window.sendPasswordReset = async function() {
+      try {
+        await sendPasswordResetEmail(auth, auth.currentUser.email);
+        showDashToast('Password reset email sent!', 'success');
+      } catch (e) { showDashToast('Error sending reset email.', 'error'); }
+    };
+
+    /* ── Toast ── */
+    function showDashToast(msg, type) {
+      const existing = document.getElementById('dashToast');
+      if (existing) existing.remove();
+      const t = document.createElement('div');
+      t.id = 'dashToast';
+      t.style.cssText = `position:fixed;bottom:2rem;right:2rem;padding:0.8rem 1.25rem;border-radius:10px;font-size:0.88rem;font-weight:600;z-index:999;animation:fadeIn 0.3s ease;box-shadow:0 4px 16px rgba(0,0,0,0.15);display:flex;align-items:center;gap:0.6rem;`;
+      t.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+      t.style.color      = type === 'success' ? '#155724' : '#721c24';
+      t.innerHTML = `<i class="fa fa-${type==='success'?'check-circle':'exclamation-circle'}"></i> ${msg}`;
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 3500);
+    }
+    window.showDashToast = showDashToast;
+  </script>
+
+  <script>
+    /* ── Section switching ── */
+    function showSection(id, linkEl) {
+      document.querySelectorAll('.dash-content-section').forEach(s => s.style.display = 'none');
+      document.getElementById('sec-' + id).style.display = 'block';
+      document.querySelectorAll('.dash-nav li').forEach(li => li.classList.remove('active'));
+      if (linkEl) linkEl.closest('li').classList.add('active');
+      if (window.innerWidth <= 992) document.getElementById('dashSidebar').classList.remove('open');
+      window.scrollTo(0, 0);
+    }
+    window.showSection = showSection;
+
+    /* ── Profile edit toggle ── */
+    window.toggleProfileEdit = function() {
+      const form = document.getElementById('profileForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    };
+
+    /* ── Mobile sidebar toggle ── */
+    window.toggleDashSidebar = function() {
+      document.getElementById('dashSidebar').classList.toggle('open');
+    };
+
+    /* ── Navbar scroll ── */
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>

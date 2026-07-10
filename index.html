@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mana-Properties – Buy, Sell & Rent Property in Tirupathi, Renigunta, Chandragiri, Chittoor, Madanapalle & Kadapa</title>
+  <title>Mana-Properties � Buy, Sell & Rent Property in Tirupathi, Renigunta, Chandragiri, Chittoor, Madanapalle & Kadapa</title>
   <meta name="description" content="Find your dream home with Mana-Properties. Buy, sell or rent residential properties in Tirupathi, Renigunta, Chandragiri, Chittoor, Madanapalle and Kadapa directly without paying any brokerage.">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -25,7 +25,7 @@
       </div>
       <div class="topbar-right">
         <a href="post-property.html"><i class="fa fa-plus-circle"></i> Post FREE Property</a>
-        <a href="#login-modal" class="login-link" onclick="openModal('login-modal')"><i class="fa fa-user"></i> Login / Register</a>
+        <a href='auth.html' class="login-link" onclick="window.location.href='auth.html'"><i class="fa fa-user"></i> Login / Register</a>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="logo">
-        <img src="images/logo.svg" alt="Mana-Properties – No Brokerage, Just Homes" class="logo-img" />
+        <img src="images/logo.svg" alt="Mana-Properties � No Brokerage, Just Homes" class="logo-img" />
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
@@ -109,13 +109,13 @@
           <div class="search-filter-wrap" id="budgetFilter">
             <select id="budgetSelect">
               <option value="">Budget</option>
-              <option>Under ₹20 Lakhs</option>
-              <option>₹20L – ₹40L</option>
-              <option>₹40L – ₹60L</option>
-              <option>₹60L – ₹80L</option>
-              <option>₹80L – ₹1 Cr</option>
-              <option>₹1Cr – ₹2Cr</option>
-              <option>Above ₹2 Cr</option>
+              <option>Under ?20 Lakhs</option>
+              <option>?20L � ?40L</option>
+              <option>?40L � ?60L</option>
+              <option>?60L � ?80L</option>
+              <option>?80L � ?1 Cr</option>
+              <option>?1Cr � ?2Cr</option>
+              <option>Above ?2 Cr</option>
             </select>
           </div>
           <button class="btn btn-search" onclick="doSearch()"><i class="fa fa-search"></i> Search</button>
@@ -222,7 +222,7 @@
             <div class="step-num">02</div>
             <div class="step-icon"><i class="fa fa-phone-alt"></i></div>
             <h4>Contact Owner</h4>
-            <p>Connect directly with property owners or builders — no middlemen, no hidden fees. Schedule visits at your convenience.</p>
+            <p>Connect directly with property owners or builders � no middlemen, no hidden fees. Schedule visits at your convenience.</p>
           </div>
           <div class="step-arrow"><i class="fa fa-chevron-right"></i></div>
           <div class="step-item">
@@ -271,7 +271,7 @@
     <div class="container">
       <div class="section-header">
         <h2>Our <span class="highlight">Services</span></h2>
-        <p>Everything you need for a smooth property experience — all under one roof</p>
+        <p>Everything you need for a smooth property experience � all under one roof</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
@@ -312,7 +312,7 @@
         <div class="service-card">
           <div class="svc-icon" style="color: #16a085;"><i class="fa fa-tools"></i></div>
           <h4>Home Services</h4>
-          <p>Electricians, plumbers, carpenters &amp; more — professional home maintenance.</p>
+          <p>Electricians, plumbers, carpenters &amp; more � professional home maintenance.</p>
         </div>
       </div>
     </div>
@@ -400,9 +400,9 @@
           <p>Plan your finances before buying your dream home. Use our free EMI calculator.</p>
           <div class="calc-form">
             <div class="calc-group">
-              <label>Loan Amount (₹)</label>
+              <label>Loan Amount (?)</label>
               <input type="range" id="loanAmt" min="500000" max="50000000" step="100000" value="5000000" oninput="calcEMI()"/>
-              <div class="range-val">₹ <span id="loanAmtVal">50,00,000</span></div>
+              <div class="range-val">? <span id="loanAmtVal">50,00,000</span></div>
             </div>
             <div class="calc-group">
               <label>Interest Rate (% per annum)</label>
@@ -420,23 +420,23 @@
           <div class="emi-result">
             <div class="emi-monthly">
               <p>Monthly EMI</p>
-              <h2>₹ <span id="emiResult">43,391</span></h2>
+              <h2>? <span id="emiResult">43,391</span></h2>
             </div>
             <div class="emi-breakdown">
               <div class="emi-breakdown-item">
                 <span class="dot-indicator" style="background:#1a3c6e;"></span>
                 <span>Principal Amount</span>
-                <strong>₹ <span id="principalDisp">50,00,000</span></strong>
+                <strong>? <span id="principalDisp">50,00,000</span></strong>
               </div>
               <div class="emi-breakdown-item">
                 <span class="dot-indicator" style="background:#f4a832;"></span>
                 <span>Total Interest</span>
-                <strong>₹ <span id="interestDisp">54,13,840</span></strong>
+                <strong>? <span id="interestDisp">54,13,840</span></strong>
               </div>
               <div class="emi-breakdown-item">
                 <span class="dot-indicator" style="background:#e74c3c;"></span>
                 <span>Total Payment</span>
-                <strong>₹ <span id="totalDisp">1,04,13,840</span></strong>
+                <strong>? <span id="totalDisp">1,04,13,840</span></strong>
               </div>
             </div>
             <a href="#" class="btn btn-primary btn-block">Apply for Home Loan <i class="fa fa-arrow-right"></i></a>
@@ -472,7 +472,7 @@
       <div class="footer-grid">
         <div class="footer-col footer-brand">
           <a href="index.html" class="logo">
-            <img src="images/logo.svg" alt="Mana-Properties – No Brokerage, Just Homes" class="logo-img" />
+            <img src="images/logo.svg" alt="Mana-Properties � No Brokerage, Just Homes" class="logo-img" />
           </a>
           <p>Tirupathi's trusted broker-free property portal. Buy, sell and rent properties directly. Zero brokerage, maximum savings.</p>
           <div class="social-links">
@@ -561,7 +561,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Mana-Properties — All rights reserved. | RERA Registered</p>
+        <p>&copy; 2026 Mana-Properties � All rights reserved. | RERA Registered</p>
         <p>Made with <i class="fa fa-heart" style="color:#e74c3c;"></i> in India</p>
       </div>
     </div>

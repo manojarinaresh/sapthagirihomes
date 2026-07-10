@@ -1,5 +1,5 @@
 /* ============================================================
-   SapthagiriHomes.com – Main Stylesheet
+   Mana-Properties – Main Stylesheet
    ============================================================ */
 
 /* ---- CSS Variables ---- */
@@ -227,9 +227,9 @@ input, select, textarea { font-family: var(--font); }
   text-decoration: none;
 }
 .logo-img {
-  height: 80px;
+  height: 56px;
   width: auto;
-  max-width: 200px;
+  max-width: 220px;
   object-fit: contain;
   display: block;
 }

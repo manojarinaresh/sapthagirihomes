@@ -1,5 +1,5 @@
 /* ============================================================
-   SapthagiriHomes.com – Main JavaScript
+   Mana-Properties – Main JavaScript
    ============================================================ */
 
 /* ---- Property counts per city (update these when listings are added) ---- */
@@ -342,7 +342,7 @@ function handleLogin(e) {
 }
 function handleRegister(e) {
   e.preventDefault();
-  showToast('<i class="fa fa-check-circle"></i> Registration successful! Welcome to SapthagiriHomes.', 'success');
+  showToast('<i class="fa fa-check-circle"></i> Registration successful! Welcome to Mana-Properties.', 'success');
   closeModal('login-modal');
 }
 

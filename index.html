@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mana-Properties – Buy & Sell Property in Tirupathi, Renigunta, Chandragiri & Chittoor</title>
-  <meta name="description" content="Find your dream home with Mana-Properties. Buy and sell residential properties in Tirupathi, Renigunta, Chandragiri and Chittoor directly without paying any brokerage.">
+  <title>Mana-Properties – Buy, Sell & Rent Property in Tirupathi, Renigunta, Chandragiri & Chittoor</title>
+  <meta name="description" content="Find your dream home with Mana-Properties. Buy, sell or rent residential properties in Tirupathi, Renigunta, Chandragiri and Chittoor directly without paying any brokerage.">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -47,6 +47,15 @@
           </div>
         </li>
         <li class="dropdown">
+          <a href="#">Rent <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="properties.html?type=rent&cat=apartment">Apartments for Rent</a>
+            <a href="properties.html?type=rent&cat=villa">Villas for Rent</a>
+            <a href="properties.html?type=rent&cat=house">Independent Houses</a>
+            <a href="properties.html?type=rent&cat=pg">PG / Flatmates</a>
+          </div>
+        </li>
+        <li class="dropdown">
           <a href="#">Sell <i class="fa fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="properties.html?type=sell&cat=apartment">Sell Apartment</a>
@@ -72,12 +81,13 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Find Your <span class="highlight">Dream Home</span><br/>In the Holy Land of Tirupathi</h1>
-      <p>Andhra Pradesh's most trusted broker-free property portal. Buy &amp; sell directly with owners in Tirupathi, Renigunta, Chandragiri &amp; Chittoor. Zero brokerage, maximum savings.</p>
+      <p>Andhra Pradesh's most trusted broker-free property portal. Buy, sell &amp; rent directly with owners in Tirupathi, Renigunta, Chandragiri &amp; Chittoor. Zero brokerage, maximum savings.</p>
 
       <!-- Search Tabs -->
       <div class="search-box">
         <div class="search-tabs">
           <button class="tab-btn active" onclick="switchTab(this, 'buy')">Buy</button>
+          <button class="tab-btn" onclick="switchTab(this, 'rent')">Rent</button>
           <button class="tab-btn" onclick="switchTab(this, 'sell')">Sell</button>
         </div>
         <div class="search-form">
@@ -115,7 +125,9 @@
       <div class="quick-links">
         <span>Popular:</span>
         <a href="properties.html?type=buy&city=Tirupathi">Tirupathi Flats</a>
+        <a href="properties.html?type=rent&city=Tirupathi">Rent in Tirupathi</a>
         <a href="properties.html?type=buy&city=Renigunta">Renigunta Villas</a>
+        <a href="properties.html?type=rent&city=Renigunta">Rent in Renigunta</a>
         <a href="properties.html?type=buy&city=Chandragiri">Chandragiri Plots</a>
         <a href="properties.html?type=buy&city=Chittoor">Chittoor Homes</a>
         <a href="properties.html?type=buy&cat=plot">Plots Near Me</a>
@@ -453,7 +465,7 @@
           <a href="index.html" class="logo">
             <img src="images/logo.svg" alt="Mana-Properties – No Brokerage, Just Homes" class="logo-img" />
           </a>
-          <p>Tirupathi's trusted broker-free property portal. Buy and sell properties directly. Zero brokerage, maximum savings.</p>
+          <p>Tirupathi's trusted broker-free property portal. Buy, sell and rent properties directly. Zero brokerage, maximum savings.</p>
           <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -470,8 +482,18 @@
             <li><a href="properties.html?type=buy&cat=villa">Villas for Sale</a></li>
             <li><a href="properties.html?type=buy&cat=plot">Plots for Sale</a></li>
             <li><a href="properties.html?type=buy&cat=commercial">Commercial Property</a></li>
-            <li><a href="properties.html?type=new">New Projects</a></li>
             <li><a href="properties.html?type=buy&budget=affordable">Affordable Homes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Rent Property</h5>
+          <ul>
+            <li><a href="properties.html?type=rent&cat=apartment">Apartments for Rent</a></li>
+            <li><a href="properties.html?type=rent&cat=villa">Villas for Rent</a></li>
+            <li><a href="properties.html?type=rent&cat=house">Houses for Rent</a></li>
+            <li><a href="properties.html?type=rent&cat=pg">PG / Flatmates</a></li>
+            <li><a href="properties.html?type=rent&city=Tirupathi">Rent in Tirupathi</a></li>
           </ul>
         </div>
 
@@ -482,7 +504,6 @@
             <li><a href="properties.html?type=sell&cat=villa">Sell Villa / House</a></li>
             <li><a href="properties.html?type=sell&cat=plot">Sell Plot / Land</a></li>
             <li><a href="post-property.html">Post FREE Listing</a></li>
-            <li><a href="post-property.html">Pricing Plans</a></li>
           </ul>
         </div>
 

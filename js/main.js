@@ -69,16 +69,26 @@ function switchTab(btn, tab) {
 
   const budgetSel = document.getElementById('budgetSelect');
   if (!budgetSel) return;
-  // Both buy and sell use property sale budget ranges
-  budgetSel.innerHTML = `
-    <option value="">Budget</option>
-    <option>Under ₹20 Lakhs</option>
-    <option>₹20L – ₹40L</option>
-    <option>₹40L – ₹60L</option>
-    <option>₹60L – ₹80L</option>
-    <option>₹80L – ₹1 Cr</option>
-    <option>₹1Cr – ₹2Cr</option>
-    <option>Above ₹2 Cr</option>`;
+  if (tab === 'rent') {
+    budgetSel.innerHTML = `
+      <option value="">Monthly Rent</option>
+      <option>Under ₹5,000 / mo</option>
+      <option>₹5K – ₹10K / mo</option>
+      <option>₹10K – ₹15K / mo</option>
+      <option>₹15K – ₹25K / mo</option>
+      <option>₹25K – ₹40K / mo</option>
+      <option>Above ₹40K / mo</option>`;
+  } else {
+    budgetSel.innerHTML = `
+      <option value="">Budget</option>
+      <option>Under ₹20 Lakhs</option>
+      <option>₹20L – ₹40L</option>
+      <option>₹40L – ₹60L</option>
+      <option>₹60L – ₹80L</option>
+      <option>₹80L – ₹1 Cr</option>
+      <option>₹1Cr – ₹2Cr</option>
+      <option>Above ₹2 Cr</option>`;
+  }
 }
 
 /* ---- Hero search ---- */

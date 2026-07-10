@@ -4,26 +4,33 @@
 
 /* ---- Property counts per city (update these when listings are added) ---- */
 const cityCounts = {
-  tirupathi:   0,
-  renigunta:   0,
-  chandragiri: 0,
-  chittoor:    0
+  tirupathi:    0,
+  renigunta:    0,
+  chandragiri:  0,
+  chittoor:     0,
+  madanapalle:  0,
+  kadapa:       0
 };
 
 function updateCityCounts() {
-  const total = cityCounts.tirupathi + cityCounts.renigunta + cityCounts.chandragiri + cityCounts.chittoor;
+  const total = cityCounts.tirupathi + cityCounts.renigunta + cityCounts.chandragiri
+              + cityCounts.chittoor + cityCounts.madanapalle + cityCounts.kadapa;
   const fmt = n => n === 0 ? '0 Properties' : n + '+ Properties';
 
   const tpt  = document.getElementById('city-count-tirupathi');
   const ren  = document.getElementById('city-count-renigunta');
   const chan = document.getElementById('city-count-chandragiri');
   const chi  = document.getElementById('city-count-chittoor');
+  const mad  = document.getElementById('city-count-madanapalle');
+  const kad  = document.getElementById('city-count-kadapa');
   const tot  = document.getElementById('total-listings-count');
 
   if (tpt)  tpt.textContent  = fmt(cityCounts.tirupathi);
   if (ren)  ren.textContent  = fmt(cityCounts.renigunta);
   if (chan) chan.textContent  = fmt(cityCounts.chandragiri);
   if (chi)  chi.textContent  = fmt(cityCounts.chittoor);
+  if (mad)  mad.textContent  = fmt(cityCounts.madanapalle);
+  if (kad)  kad.textContent  = fmt(cityCounts.kadapa);
   if (tot)  tot.textContent  = total === 0 ? '0' : total + '+';
 }
 document.addEventListener('DOMContentLoaded', updateCityCounts);

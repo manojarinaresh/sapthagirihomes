@@ -881,6 +881,19 @@ input, select, textarea { font-family: var(--font); }
     url('https://commons.wikimedia.org/wiki/Special:FilePath/Horsley_Hills.jpg') center/cover no-repeat,
     linear-gradient(150deg, #1a3a10 0%, #2e6a20 40%, #3a9030 65%, #1a5020 100%);
 }
+.city-madanapalle {
+  background:
+    linear-gradient(170deg, rgba(20,40,10,0.55) 0%, rgba(0,0,0,0.50) 100%),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Madanapalle_town_view.jpg/800px-Madanapalle_town_view.jpg') center/cover no-repeat,
+    linear-gradient(150deg, #1a4020 0%, #2e7030 40%, #3a9040 65%, #1a5828 100%);
+}
+.city-kadapa {
+  background:
+    linear-gradient(170deg, rgba(40,20,10,0.55) 0%, rgba(0,0,0,0.50) 100%),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gandikota_Grand_Canyon.jpg/800px-Gandikota_Grand_Canyon.jpg') center/cover no-repeat,
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Gandikota_fort.jpg') center/cover no-repeat,
+    linear-gradient(150deg, #4a2800 0%, #7a4810 40%, #9a6828 65%, #3a1808 100%);
+}
 .city-info {
   position: absolute;
   bottom: 0; left: 0; right: 0;
